@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAR LIBYA | كار ليبيا</title>
+<meta name="description" content="سوق السيارات في ليبيا للبيع والشراء">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101010;color:white;font-family:Arial,sans-serif}
+header{text-align:center;background:#050505;padding:25px;border-bottom:3px solid #d4af37}
+.logo{font-size:32px;color:#d4af37;font-weight:bold}
+nav{text-align:center;padding:15px}
+button{background:#d4af37;color:#111;border:0;border-radius:7px;padding:12px;margin:4px;font-weight:bold;cursor:pointer}
+main{max-width:950px;margin:auto;padding:15px}
+.hero{text-align:center;padding:25px;background:#1c1c1c;border:1px solid #d4af37;border-radius:12px}
+h2{color:#d4af37}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;background:#292929;color:white;border:1px solid #555;border-radius:7px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+.card{background:#202020;border:1px solid #555;border-radius:10px;padding:15px;overflow-wrap:anywhere}
+.price{color:#d4af37;font-size:22px;font-weight:bold}
+.hidden{display:none}
+.small{color:#bbb;font-size:13px}
+footer{text-align:center;padding:25px;color:#aaa}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">CAR LIBYA</div>
+<p>سوق السيارات الليبي</p>
+</header>
+<nav>
+<button onclick="show('list')">السيارات المعروضة</button>
+<button onclick="show('add')">أضف إعلانك</button>
+<button onclick="show('about')">عن الموقع</button>
+</nav>
+<main>
+<section class="hero">
+<h1>سيارتك القادمة تبدأ من هنا 🚘</h1>
+<p>بيع واشري سيارتك في ليبيا بكل سهولة</p>
+<button onclick="show('add')">أضف إعلان سيارتك</button>
+</section>
+
+<section id="list">
+<h2>السيارات المعروضة للبيع</h2>
+<input id="search" placeholder="ابحث عن سيارة أو موديل..." oninput="render()">
+<select id="city" onchange="render()">
+<option value="">كل المدن</option>
+<option>طرابلس</option><option>بنغازي</option><option>الخمس</option>
+<option>مصراتة</option><option>الزاوية</option><option>سبها</option>
+</select>
+<div id="cars" class="grid"></div>
+<p id="empty" class="small"></p>
+</section>
+
+<section id="add" class="hidden">
+<h2>أضف إعلان سيارتك</h2>
+<form id="form">
+<label>ماركة السيارة</label>
+<select id="brand" required>
+<option value="">اختر الماركة</option>
+<option>Toyota</option><option>Hyundai</option><option>Kia</option>
+<option>Mercedes</option><option>BMW</option><option>Honda</option>
+<option>Nissan</option><option>أخرى</option>
+</select>
+<label>موديل السيارة</label>
+<input id="model" placeholder="مثال: Elantra" required>
+<label>سنة الصنع</label>
+<input id="year" type="number" min="1980" max="2035" required>
+<label>السعر بالدينار الليبي</label>
+<input id="price" type="number" min="1" required>
+<label>المدينة</label>
+<select id="newcity" required>
+<option value="">اختر المدينة</option>
+<option>طرابلس</option><option>بنغازي</option><option>الخمس</option>
+<option>مصراتة</option><option>الزاوية</option><option>سبها</option>
+</select>
+<label>رقم واتساب مع مفتاح الدولة</label>
+<input id="phone" placeholder="2189XXXXXXXX" required>
+<label>وصف السيارة</label>
+<textarea id="details" placeholder="حالة السيارة ومواصفاتها"></textarea>
+<button type="submit">حفظ الإعلان</button>
+</form>
+<p class="small">ملاحظة: هذه نسخة تجريبية تحفظ الإعلانات على نفس الجهاز فقط.</p>
+</section>
+
+<section id="about" class="hidden">
+<h2>عن CAR LIBYA</h2>
+<p>منصة تجريبية لتسهيل بيع وشراء السيارات في ليبيا.</p>
+<p>هدفنا جمع إعلانات السيارات في مكان واحد بتصميم عربي عصري.</p>
+</section>
+</main>
+<footer>© CAR LIBYA - سوق السيارات الليبي</footer>
+
+<script>
+let cars=[];
+try{cars=JSON.parse(localStorage.getItem('carLibya')||'[]')}catch(e){}
+function save(){localStorage.setItem('carLibya',JSON.stringify(cars))}
+function show(id){
+['list','add','about'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
+if(id==='list')render();
+window.scrollTo(0,0);
+}
+function render(){
+let q=document.getElementById('search').value.toLowerCase();
+let city=document.getElementById('city').value;
+let result=cars.filter(c=>(c.brand+' '+c.model+' '+c.year).toLowerCase().includes(q)&&(!city||c.city===city));
+let box=document.getElementById('cars');
