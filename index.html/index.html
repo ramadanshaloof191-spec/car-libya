@@ -2,78 +2,68 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b12">
-<meta name="description" content="CAR LIBYA - منصتك لبيع وشراء السيارات في ليبيا">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
 <title>CAR LIBYA | سوق السيارات الليبي</title>
 
 <style>
 :root{
-  --bg:#080b12;
-  --panel:#111722;
-  --panel2:#171f2d;
-  --gold:#e9b949;
-  --gold2:#ffd978;
-  --blue:#2589ff;
-  --text:#f5f7fb;
-  --muted:#9ba7ba;
-  --border:rgba(255,255,255,.09);
-  --green:#20c878;
-  --red:#ff5267;
+  --black:#080808;
+  --surface:#111111;
+  --surface2:#191919;
+  --gold:#d6ad60;
+  --gold-light:#f4d89a;
+  --white:#f7f5ef;
+  --muted:#a09b91;
+  --border:rgba(214,173,96,.2);
+  --green:#24b878;
+  --red:#d94d55;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 
 body{
   font-family:Tahoma,Arial,sans-serif;
-  background:
-    radial-gradient(ellipse at 85% 0%,rgba(37,137,255,.10),transparent 35%),
-    radial-gradient(ellipse at 10% 15%,rgba(233,185,73,.08),transparent 30%),
-    var(--bg);
-  color:var(--text);
+  background:var(--black);
+  color:var(--white);
   line-height:1.8;
-  min-height:100vh;
 }
 
-button,input,select,textarea{
-  font:inherit;
+button,input,select,textarea{font:inherit}
+button,a{transition:.2s}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+.container{width:min(1200px,92%);margin:auto}
+.gold{color:var(--gold)}
+
+.topbar{
+  background:#0e0e0e;
+  border-bottom:1px solid var(--border);
+  color:var(--muted);
+  font-size:11px;
+  padding:7px 0;
 }
 
-button{
-  cursor:pointer;
+.topbar-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
 }
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-/* HEADER */
 
 header{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(8,11,18,.93);
-  backdrop-filter:blur(16px);
+  background:rgba(8,8,8,.96);
   border-bottom:1px solid var(--border);
+  backdrop-filter:blur(15px);
 }
 
 .nav{
-  min-height:78px;
+  min-height:80px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -86,511 +76,405 @@ header{
   gap:10px;
 }
 
-.logo{
-  width:52px;
-  height:52px;
-  display:grid;
-  place-items:center;
-  border-radius:16px;
-  background:linear-gradient(145deg,#ffe29a,#bd8720);
-  box-shadow:0 5px 25px rgba(233,185,73,.2);
-}
-
-.logo svg{
-  width:42px;
-  height:32px;
-}
+.brand-logo{width:50px;height:42px}
 
 .brand-name{
   direction:ltr;
-  text-align:left;
-  font-size:22px;
+  font-size:21px;
   font-weight:900;
   letter-spacing:1px;
-  line-height:1.2;
+  line-height:1.3;
 }
 
-.brand-name span{
-  color:var(--gold);
-}
+.brand-name span{color:var(--gold)}
 
 .brand small{
   display:block;
   color:var(--muted);
-  font-size:11px;
-  margin-top:4px;
+  font-size:9px;
+  letter-spacing:1.5px;
+  direction:ltr;
 }
 
-.nav-actions{
+.nav-links{
   display:flex;
-  gap:9px;
-  align-items:center;
+  gap:22px;
+  font-size:12px;
+  color:#c9c5bc;
 }
+
+.nav-links a:hover{color:var(--gold)}
 
 .btn{
-  border:0;
-  border-radius:12px;
-  padding:11px 17px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:7px;
+  border:1px solid transparent;
+  border-radius:5px;
+  padding:11px 16px;
   font-weight:bold;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.08);
-}
-
-.btn-gold{
-  background:linear-gradient(135deg,var(--gold2),#c58b20);
-  color:#17120a;
-  box-shadow:0 5px 20px rgba(233,185,73,.13);
-}
-
-.btn-blue{
-  background:linear-gradient(135deg,#329cff,#1460d3);
-  color:white;
-}
-
-.btn-dark{
-  background:#202a39;
-  color:white;
-  border:1px solid var(--border);
-}
-
-.btn-green{
-  background:#0c9e61;
-  color:white;
-}
-
-.btn-red{
-  background:#722532;
-  color:#ffdce1;
-}
-
-.btn-small{
-  padding:8px 11px;
   font-size:12px;
 }
 
-/* HERO */
-
-.hero{
-  padding:48px 0 30px;
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-light),#b98a3d);
+  color:#15110a;
 }
+
+.btn-gold:hover{
+  filter:brightness(1.1);
+  transform:translateY(-2px);
+}
+
+.btn-outline{
+  border-color:var(--border);
+  color:var(--gold-light);
+  background:#d6ad6008;
+}
+
+.btn-green{background:#168b57;color:white}
+.btn-red{background:#67252a;color:#ffe1e1}
+.btn-dark{background:#242424;color:white;border-color:#333}
+
+.hero{padding:38px 0 45px}
 
 .hero-box{
-  min-height:350px;
-  position:relative;
-  overflow:hidden;
+  min-height:420px;
   display:grid;
-  grid-template-columns:1.1fr .9fr;
+  grid-template-columns:1fr 1fr;
   align-items:center;
-  gap:25px;
-  padding:40px;
-  border-radius:28px;
-  border:1px solid rgba(233,185,73,.22);
+  overflow:hidden;
+  border:1px solid var(--border);
   background:
-    radial-gradient(ellipse at 75% 50%,rgba(37,137,255,.19),transparent 45%),
-    linear-gradient(120deg,#151d2a,#0e131d 65%,#181710);
-}
-
-.hero-box:after{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  border:1px solid rgba(233,185,73,.12);
-  border-radius:50%;
-  right:-120px;
-  top:-170px;
-  box-shadow:0 0 0 35px rgba(233,185,73,.025),
-             0 0 0 70px rgba(233,185,73,.02);
-  pointer-events:none;
+    radial-gradient(ellipse at 72% 48%,#d6ad601b,transparent 43%),
+    linear-gradient(115deg,#151515,#080808 75%);
 }
 
 .hero-content{
   position:relative;
   z-index:2;
+  padding:40px;
 }
 
 .eyebrow{
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  border:1px solid rgba(233,185,73,.25);
-  background:rgba(233,185,73,.08);
-  color:var(--gold2);
-  border-radius:50px;
-  padding:6px 13px;
-  font-size:12px;
+  gap:9px;
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:1px;
   margin-bottom:15px;
 }
 
+.eyebrow:before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:var(--gold);
+}
+
 .hero h1{
-  font-size:clamp(30px,5vw,52px);
-  line-height:1.35;
-  margin-bottom:14px;
+  font-size:clamp(34px,4.5vw,58px);
+  line-height:1.4;
   font-weight:900;
+  margin-bottom:15px;
 }
 
 .hero h1 span{
+  display:block;
   color:var(--gold);
 }
 
 .hero p{
-  color:#b9c3d2;
-  max-width:500px;
-  font-size:15px;
-  margin-bottom:23px;
+  color:#aaa69d;
+  font-size:13px;
+  max-width:420px;
+  margin-bottom:24px;
+  line-height:2.1;
 }
 
 .hero-buttons{
   display:flex;
-  flex-wrap:wrap;
   gap:10px;
-}
-
-.hero-art{
-  position:relative;
-  z-index:1;
-  min-width:0;
-}
-
-.hero-art svg{
-  display:block;
-  width:100%;
-  max-width:490px;
-  margin:auto;
-  filter:drop-shadow(0 20px 25px rgba(0,0,0,.45));
-}
-
-.hero-stats{
-  display:flex;
   flex-wrap:wrap;
-  gap:20px;
+}
+
+.hero-bottom{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
   margin-top:26px;
 }
 
-.stat{
-  display:flex;
-  align-items:center;
-  gap:9px;
-}
-
-.stat-icon{
-  width:35px;
-  height:35px;
-  display:grid;
-  place-items:center;
-  background:#202a39;
-  border-radius:10px;
-}
-
-.stat strong{
+.hero-stat strong{
   display:block;
-  font-size:14px;
+  font-size:17px;
+  color:var(--gold-light);
 }
 
-.stat small{
+.hero-stat small{
   color:var(--muted);
-  font-size:11px;
+  font-size:10px;
 }
 
-/* SECTION */
-
-.section{
-  padding:26px 0;
+.hero-visual{
+  position:relative;
+  padding:20px;
+  min-width:0;
 }
+
+.hero-visual:before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  border:1px solid #d6ad6026;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 35px #d6ad6008,
+             0 0 0 70px #d6ad6005;
+}
+
+.car-art{
+  position:relative;
+  z-index:1;
+  width:100%;
+  filter:drop-shadow(0 20px 20px #000);
+}
+
+.section{padding:30px 0 45px}
 
 .section-heading{
   display:flex;
+  align-items:end;
   justify-content:space-between;
-  align-items:center;
   flex-wrap:wrap;
   gap:15px;
-  margin-bottom:20px;
+  margin-bottom:22px;
 }
 
 .section-heading h2{
-  font-size:25px;
+  font-size:26px;
   font-weight:900;
-}
-
-.section-heading h2 span{
-  color:var(--gold);
 }
 
 .section-heading p{
   color:var(--muted);
-  font-size:13px;
-}
-
-.count-badge{
-  background:rgba(233,185,73,.12);
-  border:1px solid rgba(233,185,73,.22);
-  color:var(--gold2);
-  padding:7px 14px;
-  border-radius:50px;
   font-size:12px;
+  margin-top:3px;
 }
 
-/* SEARCH */
+.section-tag{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:2px;
+  direction:ltr;
+  margin-bottom:4px;
+}
 
 .search-panel{
-  background:linear-gradient(145deg,#141c29,#10151f);
-  border:1px solid var(--border);
-  padding:20px;
-  border-radius:20px;
-  margin-bottom:22px;
+  background:var(--surface);
+  border:1px solid #29251e;
+  padding:18px;
+  margin-bottom:24px;
 }
 
 .search-grid{
   display:grid;
   grid-template-columns:2fr 1fr 1fr auto;
   gap:12px;
+  align-items:end;
 }
 
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
+.field{min-width:0}
 
 .field label{
-  color:#c7d0de;
-  font-size:12px;
-  font-weight:bold;
+  display:block;
+  font-size:11px;
+  color:#c9c1b2;
+  margin-bottom:7px;
 }
 
 input,select,textarea{
   width:100%;
   min-width:0;
-  padding:12px 13px;
-  border-radius:11px;
-  border:1px solid #2b3647;
-  background:#0b111b;
-  color:white;
+  background:#0a0a0a;
+  color:var(--white);
+  border:1px solid #302d27;
+  border-radius:4px;
+  padding:12px;
   outline:none;
-  transition:.2s;
 }
 
 input:focus,select:focus,textarea:focus{
   border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(233,185,73,.08);
 }
 
-input::placeholder,textarea::placeholder{
-  color:#738096;
-}
-
-select option{
-  background:#111722;
-  color:white;
-}
-
-.search-button{
-  align-self:end;
-  min-height:46px;
-}
-
-/* CARDS */
+input::placeholder,textarea::placeholder{color:#77736b}
+select option{background:#111;color:white}
 
 .cars-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:19px;
+  gap:20px;
 }
 
 .car-card{
   min-width:0;
+  background:#111;
+  border:1px solid #28251f;
   overflow:hidden;
-  background:linear-gradient(145deg,#151d2a,#0f141e);
-  border:1px solid var(--border);
-  border-radius:19px;
   transition:.25s;
 }
 
 .car-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(233,185,73,.45);
-  box-shadow:0 18px 45px rgba(0,0,0,.23);
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  box-shadow:0 15px 35px #0008;
 }
 
-.car-image{
+.car-photo{
+  height:220px;
   position:relative;
-  height:210px;
   background:
-    radial-gradient(ellipse at center,rgba(37,137,255,.15),transparent 70%),
-    #111927;
+    radial-gradient(ellipse at center,#d6ad6017,transparent 65%),
+    #171717;
   overflow:hidden;
 }
 
-.car-image img{
+.car-photo img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
 }
 
-.image-placeholder{
-  width:100%;
+.photo-placeholder{
   height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
   flex-direction:column;
+  color:#746c5d;
   gap:8px;
-  color:#7f8ba0;
 }
 
-.image-placeholder svg{
-  width:105px;
-  opacity:.7;
+.photo-placeholder svg{width:115px}
+
+.photo-placeholder span{
+  direction:ltr;
+  letter-spacing:3px;
+  font-size:10px;
 }
 
-.image-placeholder span{
-  font-size:11px;
-}
-
-.car-badge{
+.status{
   position:absolute;
   top:12px;
   right:12px;
-  border-radius:8px;
-  padding:5px 10px;
-  font-size:11px;
-  font-weight:bold;
-  background:rgba(8,11,18,.85);
-  border:1px solid rgba(255,255,255,.13);
+  padding:4px 10px;
+  font-size:10px;
+  background:#080808e8;
+  border:1px solid var(--border);
+  color:var(--gold-light);
 }
 
-.badge-available{
-  color:#60e9a3;
-}
+.status.sold{color:#ff9292}
 
-.badge-sold{
-  color:#ff8190;
-}
-
-.car-body{
-  padding:17px;
-}
+.car-info{padding:17px}
 
 .car-title{
-  font-size:19px;
+  font-size:18px;
   font-weight:900;
-  margin-bottom:8px;
   overflow-wrap:anywhere;
 }
 
-.car-meta{
+.car-details{
   display:flex;
   flex-wrap:wrap;
   gap:7px;
-  margin-bottom:13px;
+  margin:12px 0;
 }
 
-.meta-item{
-  background:#202938;
-  color:#c2ccda;
-  padding:5px 9px;
-  border-radius:8px;
-  font-size:11px;
+.detail{
+  background:#1e1e1e;
+  border:1px solid #2c2c2c;
+  color:#bcb6aa;
+  padding:4px 8px;
+  font-size:10px;
 }
 
-.car-price{
-  color:var(--gold2);
+.price{
   font-size:24px;
   font-weight:900;
+  color:var(--gold);
   margin:12px 0;
-  direction:rtl;
 }
 
-.car-price small{
-  font-size:12px;
+.price small{
+  color:#aaa;
+  font-size:11px;
   font-weight:normal;
-  color:#b4bdca;
 }
 
-.car-description{
-  color:#9eabba;
+.description{
+  color:#99948a;
   font-size:12px;
-  line-height:1.9;
-  margin-bottom:14px;
-  overflow-wrap:anywhere;
   white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  margin:10px 0 14px;
 }
 
-.car-phone{
-  color:#bfc9d7;
+.phone{
+  color:#c9c2b5;
   font-size:12px;
-  margin-bottom:13px;
+  margin-bottom:12px;
   direction:ltr;
   text-align:right;
 }
 
 .car-actions{
+  border-top:1px solid #29251f;
+  padding-top:13px;
   display:flex;
   flex-wrap:wrap;
   gap:7px;
-  border-top:1px solid var(--border);
-  padding-top:13px;
 }
 
 .car-actions .btn{
   flex:1 1 auto;
+  padding:9px;
+  font-size:11px;
 }
 
 .empty-state{
-  text-align:center;
-  border:1px dashed #354052;
-  border-radius:20px;
-  padding:45px 20px;
-  color:var(--muted);
   grid-column:1/-1;
+  border:1px dashed #3a3429;
+  padding:45px 15px;
+  text-align:center;
+  color:var(--muted);
 }
 
-.empty-icon{
-  font-size:43px;
+.empty-state strong{
+  display:block;
+  font-size:18px;
+  color:var(--white);
   margin-bottom:8px;
 }
 
-.empty-state h3{
-  color:white;
-  margin-bottom:5px;
-}
-
-/* ADD FORM */
-
-.add-section{
-  padding:35px 0 50px;
-}
+.add-section{padding:25px 0 60px}
 
 .form-panel{
-  background:
-    radial-gradient(ellipse at 100% 0%,rgba(233,185,73,.08),transparent 35%),
-    linear-gradient(145deg,#151d2a,#0f141e);
-  border:1px solid rgba(233,185,73,.19);
-  border-radius:23px;
-  padding:25px;
+  border:1px solid var(--border);
+  background:linear-gradient(145deg,#151515,#0d0d0d);
+  padding:26px;
 }
 
-.form-title{
-  margin-bottom:20px;
-}
-
-.form-title h2{
-  font-size:25px;
-}
-
-.form-title p{
-  font-size:13px;
-  color:var(--muted);
-}
+.form-heading{margin-bottom:23px}
+.form-heading h2{font-size:25px}
+.form-heading p{font-size:12px;color:var(--muted)}
 
 .form-grid{
   display:grid;
@@ -598,85 +482,71 @@ select option{
   gap:17px;
 }
 
-.full{
-  grid-column:1/-1;
-}
+.full{grid-column:1/-1}
+textarea{resize:vertical;min-height:105px}
 
-textarea{
-  resize:vertical;
-  min-height:105px;
-}
-
-.file-note{
-  color:var(--muted);
+.note{
   font-size:11px;
-  margin-top:5px;
+  color:#aaa18e;
+  margin-top:6px;
 }
 
 .form-actions{
   display:flex;
-  flex-wrap:wrap;
   gap:10px;
-  margin-top:20px;
+  flex-wrap:wrap;
+  margin-top:21px;
 }
 
 .notice{
-  margin-top:15px;
-  padding:12px;
-  border-radius:11px;
-  background:rgba(37,137,255,.08);
-  border:1px solid rgba(37,137,255,.2);
-  color:#a9cfff;
-  font-size:12px;
-  line-height:1.9;
+  margin-top:18px;
+  padding:12px 14px;
+  background:#19160f;
+  border-right:3px solid var(--gold);
+  color:#c6bda9;
+  font-size:11px;
+  line-height:2;
 }
-
-/* FOOTER */
 
 footer{
   border-top:1px solid var(--border);
-  padding:25px 0;
-  background:#080b12;
+  background:#0b0b0b;
+  padding:27px 0;
 }
 
 .footer-inner{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   flex-wrap:wrap;
   gap:15px;
 }
 
-.footer-inner p{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.footer-inner strong{
+.footer-brand{
   direction:ltr;
+  font-weight:900;
+  letter-spacing:2px;
   color:var(--gold);
-  font-size:17px;
+  font-size:20px;
 }
 
-/* TOAST */
+.footer-inner p{color:var(--muted);font-size:11px}
 
 .toast{
   position:fixed;
+  z-index:500;
   bottom:20px;
   left:50%;
-  transform:translate(-50%,120px);
-  z-index:500;
-  background:#1c2838;
-  color:white;
-  border:1px solid rgba(233,185,73,.35);
-  padding:13px 20px;
-  border-radius:13px;
-  box-shadow:0 10px 35px #0008;
-  width:max-content;
-  max-width:90%;
-  font-size:13px;
-  transition:.3s;
+  transform:translate(-50%,100px);
   opacity:0;
+  pointer-events:none;
+  background:#1b1914;
+  color:white;
+  border:1px solid var(--gold);
+  padding:12px 20px;
+  max-width:90%;
+  font-size:12px;
+  transition:.25s;
 }
 
 .toast.show{
@@ -684,236 +554,1182 @@ footer{
   opacity:1;
 }
 
-[hidden]{
-  display:none!important;
-}
-
-/* RESPONSIVE */
+[hidden]{display:none!important}
 
 @media(max-width:900px){
-  .hero-box{
-    grid-template-columns:1fr;
-    padding:30px;
-  }
-
-  .hero-art{
-    max-width:500px;
-    width:100%;
-    margin:auto;
-  }
-
-  .hero-art svg{
-    max-height:230px;
-  }
-
-  .cars-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .search-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
+  .hero-box{grid-template-columns:1fr}
+  .hero-content{padding:30px 26px 0}
+  .hero-visual{max-width:560px;width:100%;margin:auto}
+  .hero-visual .car-art{max-height:250px}
+  .cars-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 @media(max-width:560px){
-  .container{
-    width:94%;
-  }
-
-  .nav{
-    min-height:68px;
-  }
-
-  .logo{
-    width:43px;
-    height:43px;
-  }
-
-  .brand-name{
-    font-size:17px;
-  }
-
-  .brand small{
-    font-size:9px;
-  }
-
-  .nav-actions .btn{
-    padding:9px 11px;
-    font-size:11px;
-  }
-
-  .hero{
-    padding-top:20px;
-  }
-
-  .hero-box{
-    padding:23px 18px;
-    border-radius:21px;
-    gap:12px;
-  }
-
-  .hero h1{
-    font-size:31px;
-  }
-
-  .hero p{
-    font-size:13px;
-  }
-
-  .hero-stats{
-    gap:13px;
-  }
-
-  .stat{
-    gap:6px;
-  }
-
-  .stat-icon{
-    width:30px;
-    height:30px;
-  }
-
-  .stat strong{
-    font-size:12px;
-  }
-
-  .section-heading h2{
-    font-size:21px;
-  }
-
-  .search-panel{
-    padding:13px;
-  }
-
-  .search-grid{
-    grid-template-columns:1fr;
-  }
-
-  .cars-grid{
-    grid-template-columns:1fr;
-    gap:15px;
-  }
-
-  .car-image{
-    height:225px;
-  }
-
-  .form-panel{
-    padding:17px;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  .footer-inner{
-    justify-content:center;
-    text-align:center;
-  }
+  .container{width:94%}
+  .nav{min-height:70px;gap:8px}
+  .brand-logo{width:39px;height:35px}
+  .brand-name{font-size:16px}
+  .brand small{font-size:8px;letter-spacing:1px}
+  .nav-links{display:none}
+  .nav .btn{padding:9px 10px;font-size:10px}
+  .topbar{font-size:9px}
+  .hero{padding:20px 0 30px}
+  .hero-content{padding:24px 18px 0}
+  .hero h1{font-size:35px}
+  .hero p{font-size:12px}
+  .hero-visual{padding:10px}
+  .hero-bottom{gap:17px}
+  .hero-stat strong{font-size:14px}
+  .section-heading h2{font-size:22px}
+  .search-panel{padding:13px}
+  .search-grid{grid-template-columns:1fr}
+  .cars-grid{grid-template-columns:1fr}
+  .car-photo{height:235px}
+  .form-panel{padding:17px}
+  .form-grid{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .footer-inner{justify-content:center;text-align:center}
 }
 </style>
 </head>
 
 <body>
 
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>منصة بيع وشراء السيارات في ليبيا</span>
+    <span>YOUR NEXT CAR STARTS HERE</span>
+  </div>
+</div>
+
 <header>
   <div class="container nav">
-
-    <a href="#" class="brand" aria-label="CAR LIBYA">
-      <div class="logo">
-        <svg viewBox="0 0 120 70" fill="none" aria-hidden="true">
-          <path d="M10 43 L20 38 L32 19 Q35 14 43 14 L79 14 Q87 14 93 23 L104 37 L113 42 L115 53 L106 58 L14 58 L6 52 Z"
-            fill="#17120a" stroke="#17120a" stroke-width="3" stroke-linejoin="round"/>
-          <path d="M37 20 L78 20 Q83 20 87 26 L94 36 L27 36 Z"
-            fill="#f5d889"/>
-          <path d="M59 21 L59 36" stroke="#17120a" stroke-width="3"/>
-          <circle cx="29" cy="53" r="10" fill="#17120a" stroke="#f5d889" stroke-width="4"/>
-          <circle cx="92" cy="53" r="10" fill="#17120a" stroke="#f5d889" stroke-width="4"/>
-          <path d="M9 43 L20 43 M104 42 L114 42" stroke="#fff0b5" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-      </div>
-
+    <a href="#" class="brand">
+      <svg class="brand-logo" viewBox="0 0 120 75" fill="none">
+        <path d="M8 48L20 43L35 20Q39 14 49 14H79Q87 14 95 25L106 41L115 46V58H6V51Z" fill="#d6ad60"/>
+        <path d="M39 21H60V39H27ZM65 21H79Q85 22 91 32L96 39H65Z" fill="#101010"/>
+        <path d="M7 47H24M98 45H115" stroke="#fff1c8" stroke-width="4"/>
+        <circle cx="29" cy="57" r="12" fill="#080808" stroke="#d6ad60" stroke-width="4"/>
+        <circle cx="94" cy="57" r="12" fill="#080808" stroke="#d6ad60" stroke-width="4"/>
+        <circle cx="29" cy="57" r="4" fill="#e9e5dc"/>
+        <circle cx="94" cy="57" r="4" fill="#e9e5dc"/>
+      </svg>
       <div>
         <div class="brand-name">CAR <span>LIBYA</span></div>
-        <small>سوق السيارات الليبي</small>
+        <small>LUXURY AUTOMOTIVE MARKET</small>
       </div>
     </a>
 
-    <div class="nav-actions">
-      <a href="#cars" class="btn btn-dark">السيارات</a>
-      <a href="#addCar" class="btn btn-gold">＋ أضف إعلانك</a>
-    </div>
+    <nav class="nav-links">
+      <a href="#">الرئيسية</a>
+      <a href="#cars">السيارات</a>
+      <a href="#addCar">بيع سيارتك</a>
+    </nav>
 
+    <a href="#addCar" class="btn btn-gold">＋ أضف إعلان</a>
   </div>
 </header>
 
 <main>
+<section class="hero">
+  <div class="container">
+    <div class="hero-box">
+      <div class="hero-content">
+        <div class="eyebrow">THE LIBYAN AUTOMOTIVE MARKET</div>
+        <h1>اختار سيارتك.<span>عيش التجربة.</span></h1>
+        <p>
+          تبي تبيع سيارتك ولا تدور على وحدة تناسبك؟
+          اكتشف الإعلانات، قارن الأسعار، وتواصل مع البايع بكل سهولة.
+          سيارتك الجاية تبدأ من هني.
+        </p>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-
-      <div class="hero-box">
-
-        <div class="hero-content">
-          <div class="eyebrow">
-            <span>✦</span>
-            <span>منصتك للسيارات في ليبيا</span>
-          </div>
-
-          <h1>
-            سيارتك الجاية<br>
-            <span>تلقاها هني.</span>
-          </h1>
-
-          <p>
-            تبي تبيع سيارتك ولا تدور على وحدة تناسبك؟
-            تصفّح الإعلانات، شوف الأسعار، وتواصل مع البايع بكل سهولة.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#cars" class="btn btn-gold">🚘 تصفّح السيارات</a>
-            <a href="#addCar" class="btn btn-dark">＋ بيع سيارتك</a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat">
-              <div class="stat-icon">🚗</div>
-              <div>
-                <strong id="heroCount">0</strong>
-                <small>إعلان سيارة</small>
-              </div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-icon">📍</div>
-              <div>
-                <strong>كل ليبيا</strong>
-                <small>مدن متعددة</small>
-              </div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-icon">💬</div>
-              <div>
-                <strong>تواصل مباشر</strong>
-                <small>مع البائع</small>
-              </div>
-            </div>
-          </div>
+        <div class="hero-buttons">
+          <a href="#cars" class="btn btn-gold">اكتشف السيارات ←</a>
+          <a href="#addCar" class="btn btn-outline">اعرض سيارتك للبيع</a>
         </div>
 
-        <!-- رسم سيارة رياضية داخل الموقع -->
-        <div class="hero-art">
-          <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg"
-               role="img" aria-label="سيارة رياضية">
+        <div class="hero-bottom">
+          <div class="hero-stat">
+            <strong id="heroCount">0</strong>
+            <small>إعلان سيارة</small>
+          </div>
+          <div class="hero-stat">
+            <strong>24/7</strong>
+            <small>تصفح الإعلانات</small>
+          </div>
+          <div class="hero-stat">
+            <strong>LIBYA</strong>
+            <small>السوق الليبي</small>
+          </div>
+        </div>
+      </div>
 
-            <defs>
-              <linearGradient id="bodyPaint" x1="0" y1="0" x2="0.8" y2="1">
-                <stop offset="0" stop-color="#65baff"/>
-                <stop offset=".35" stop-color="#247fe5"/>
-                <stop offset=".75" stop-color="#
+      <div class="hero-visual">
+        <svg class="car-art" viewBox="0 0 650 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="سيارة رياضية">
+          <defs>
+            <linearGradient id="paint" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#f4d89a"/>
+              <stop offset=".3" stop-color="#c89a4b"/>
+              <stop offset=".65" stop-color="#7e5724"/>
+              <stop offset="1" stop-color="#33200e"/>
+            </linearGradient>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#d2e8f2"/>
+              <stop offset=".5" stop-color="#405365"/>
+              <stop offset="1" stop-color="#10151c"/>
+            </linearGradient>
+            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#f5dba2"/>
+              <stop offset="1" stop-color="#8b642e"/>
+            </linearGradient>
+          </defs>
+
+          <ellipse cx="325" cy="280" rx="255" ry="23" fill="#000" opacity=".65"/>
+          <ellipse cx="325" cy="279" rx="220" ry="4" fill="#d6ad60" opacity=".55"/>
+
+          <path d="M37 222L64 197L131 182L201 125Q220 109 254 108L370 108Q407 110 438 144L485 178L557 198L592 221L582 251H42Z"
+                fill="url(#paint)" stroke="#f4d89a" stroke-width="2"/>
+
+          <path d="M212 130Q230 117 256 116H300V172H161Z"
+                fill="url(#glass)" stroke="#f5dba2" stroke-width="2"/>
+
+          <path d="M310 116H368Q397 119 422 148L441 172H310Z"
+                fill="url(#glass)" stroke="#f5dba2" stroke-width="2"/>
+
+          <path d="M305 117V174" stroke="#50391c" stroke-width="7"/>
+          <path d="M45 220L108 213L122 224L48 230Z" fill="#fff0bf"/>
+          <path d="M535 209L582 220L576 234L532 228Z" fill="#e83c45"/>
+          <path d="M128 207L472 207" stroke="#ffe5a0" stroke-width="3"/>
+
+          <path d="M78 247L94 261H132L145 247M475 247L490 261H528L542 247" fill="#080808"/>
+
+          <circle cx="119" cy="247" r="42" fill="#080808" stroke="#3e3e3e" stroke-width="5"/>
+          <circle cx="119" cy="247" r="28" fill="#171717" stroke="url(#rim)" stroke-width="4"/>
+          <circle cx="119" cy="247" r="9" fill="#dedbd3"/>
+          <g stroke="#b6a17b" stroke-width="4">
+            <path d="M119 221V273M93 247H145M101 229L137 265M137 229L101 265"/>
+          </g>
+
+          <circle cx="500" cy="247" r="42" fill="#080808" stroke="#3e3e3e" stroke-width="5"/>
+          <circle cx="500" cy="247" r="28" fill="#171717" stroke="url(#rim)" stroke-width="4"/>
+          <circle cx="500" cy="247" r="9" fill="#dedbd3"/>
+          <g stroke="#b6a17b" stroke-width="4">
+            <path d="M500 221V273M474 247H526M482 229L518 265M518 229L482 265"/>
+          </g>
+          <path d="M65 275H585" stroke="#d6ad60" stroke-width="1" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cars">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="section-tag">EXPLORE THE COLLECTION</div>
+        <h2>السيارات <span class="gold">المعروضة</span></h2>
+        <p>اكتشف السيارات المتوفرة واختار اللي تناسبك.</p>
+      </div>
+      <a href="#addCar" class="btn btn-outline">＋ أضف سيارتك</a>
+    </div>
+
+    <div class="search-panel">
+      <div class="search-grid">
+        <div class="field">
+          <label for="searchInput">ابحث عن سيارة</label>
+          <input id="searchInput" type="search" placeholder="الماركة، الموديل أو الوصف">
+        </div>
+
+        <div class="field">
+          <label for="cityFilter">المدينة</label>
+          <select id="cityFilter">
+            <option value="">كل المدن</option>
+            <option>طرابلس</option>
+            <option>الخمس</option>
+            <option>مصراتة</option>
+            <option>زليتن</option>
+            <option>الزاوية</option>
+            <option>بنغازي</option>
+            <option>سبها</option>
+            <option>سرت</option>
+            <option>غريان</option>
+            <option>ترهونة</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="statusFilter">حالة الإعلان</label>
+          <select id="statusFilter">
+            <option value="available">المتاحة للبيع</option>
+            <option value="all">كل الإعلانات</option>
+            <option value="sold">المباعة</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn btn-gold" id="clearSearch">إعادة ضبط</button>
+      </div>
+    </div>
+
+    <div class="cars-grid" id="carsGrid"></div>
+  </div>
+</section>
+
+<section class="add-section" id="addCar">
+  <div class="container">
+    <div class="form-panel">
+      <div class="form-heading">
+        <div class="section-tag">SELL YOUR CAR</div>
+        <h2 id="formHeading">اعرض سيارتك <span class="gold">للبيع</span></h2>
+        <p>أضف بيانات سيارتك وخلي المهتمين يتواصلوا معاك.</p>
+      </div>
+
+      <form id="carForm">
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="make">ماركة السيارة *</label>
+            <input id="make" required maxlength="40" placeholder="Toyota">
+          </div>
+
+          <div class="field">
+            <label for="model">الموديل *</label>
+            <input id="model" required maxlength="50" placeholder="Camry">
+          </div>
+
+          <div class="field">
+            <label for="year">سنة الصنع *</label>
+            <select id="year" required></select>
+          </div>
+
+          <div class="field">
+            <label for="price">السعر بالدينار الليبي *</label>
+            <input id="price" type="number" required min="1" placeholder="45000">
+          </div>
+
+          <div class="field">
+            <label for="city">المدينة *</label>
+            <input id="city" required maxlength="40" placeholder="طرابلس">
+          </div>
+
+          <div class="field">
+            <label for="condition">حالة السيارة</label>
+            <select id="condition">
+              <option value="مستعملة">مستعملة</option>
+              <option value="جديدة">جديدة</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="phone">رقم الهاتف *</label>
+            <input id="phone" type="tel" required maxlength="25" placeholder="0912345678">
+          </div>
+
+          <div class="field">
+            <label for="images">صور السيارة</label>
+            <input id="images" type="file" accept="image/*" multiple>
+            <div class="note">حتى 3 صور. اختار صور واضحة للسيارة.</div>
+          </div>
+
+          <div class="field full">
+            <label for="description">تفاصيل إضافية</label>
+            <textarea id="description" maxlength="1000" placeholder="الممشى، حالة المحرك، نوع الوقود وأي تفاصيل أخرى..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-gold" id="submitButton">نشر إعلان السيارة</button>
+          <button type="button" class="btn btn-dark" id="cancelEdit" hidden>إلغاء التعديل</button>
+          <button type="reset" class="btn btn-outline" id="resetButton">مسح البيانات</button>
+        </div>
+      </form>
+
+      <div class="notice">
+        تنبيه: الإعلانات في هذه النسخة محفوظة في المتصفح الحالي فقط.
+        لكي تظهر إعلانات جميع المستخدمين لبعضهم، نحتاج إلى ربط قاعدة بيانات مشتركة.
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">CAR LIBYA</div>
+      <p>وجهتك لبيع وشراء السيارات في ليبيا.</p>
+    </div>
+    <p>© <span id="currentYear"></span> CAR LIBYA</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>CAR LIBYA | سوق السيارات الليبي</title>
+
+<style>
+:root{
+  --black:#080808;
+  --surface:#111111;
+  --surface2:#191919;
+  --gold:#d6ad60;
+  --gold-light:#f4d89a;
+  --white:#f7f5ef;
+  --muted:#a09b91;
+  --border:rgba(214,173,96,.2);
+  --green:#24b878;
+  --red:#d94d55;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:var(--black);
+  color:var(--white);
+  line-height:1.8;
+}
+
+button,input,select,textarea{font:inherit}
+button,a{transition:.2s}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+.container{width:min(1200px,92%);margin:auto}
+.gold{color:var(--gold)}
+
+.topbar{
+  background:#0e0e0e;
+  border-bottom:1px solid var(--border);
+  color:var(--muted);
+  font-size:11px;
+  padding:7px 0;
+}
+
+.topbar-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(8,8,8,.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(15px);
+}
+
+.nav{
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-logo{width:50px;height:42px}
+
+.brand-name{
+  direction:ltr;
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:1px;
+  line-height:1.3;
+}
+
+.brand-name span{color:var(--gold)}
+
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:1.5px;
+  direction:ltr;
+}
+
+.nav-links{
+  display:flex;
+  gap:22px;
+  font-size:12px;
+  color:#c9c5bc;
+}
+
+.nav-links a:hover{color:var(--gold)}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:1px solid transparent;
+  border-radius:5px;
+  padding:11px 16px;
+  font-weight:bold;
+  font-size:12px;
+}
+
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-light),#b98a3d);
+  color:#15110a;
+}
+
+.btn-gold:hover{
+  filter:brightness(1.1);
+  transform:translateY(-2px);
+}
+
+.btn-outline{
+  border-color:var(--border);
+  color:var(--gold-light);
+  background:#d6ad6008;
+}
+
+.btn-green{background:#168b57;color:white}
+.btn-red{background:#67252a;color:#ffe1e1}
+.btn-dark{background:#242424;color:white;border-color:#333}
+
+.hero{padding:38px 0 45px}
+
+.hero-box{
+  min-height:420px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:
+    radial-gradient(ellipse at 72% 48%,#d6ad601b,transparent 43%),
+    linear-gradient(115deg,#151515,#080808 75%);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:40px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:1px;
+  margin-bottom:15px;
+}
+
+.eyebrow:before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:var(--gold);
+}
+
+.hero h1{
+  font-size:clamp(34px,4.5vw,58px);
+  line-height:1.4;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.hero h1 span{
+  display:block;
+  color:var(--gold);
+}
+
+.hero p{
+  color:#aaa69d;
+  font-size:13px;
+  max-width:420px;
+  margin-bottom:24px;
+  line-height:2.1;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.hero-bottom{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:26px;
+}
+
+.hero-stat strong{
+  display:block;
+  font-size:17px;
+  color:var(--gold-light);
+}
+
+.hero-stat small{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.hero-visual{
+  position:relative;
+  padding:20px;
+  min-width:0;
+}
+
+.hero-visual:before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  border:1px solid #d6ad6026;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 35px #d6ad6008,
+             0 0 0 70px #d6ad6005;
+}
+
+.car-art{
+  position:relative;
+  z-index:1;
+  width:100%;
+  filter:drop-shadow(0 20px 20px #000);
+}
+
+.section{padding:30px 0 45px}
+
+.section-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.section-heading h2{
+  font-size:26px;
+  font-weight:900;
+}
+
+.section-heading p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:3px;
+}
+
+.section-tag{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:2px;
+  direction:ltr;
+  margin-bottom:4px;
+}
+
+.search-panel{
+  background:var(--surface);
+  border:1px solid #29251e;
+  padding:18px;
+  margin-bottom:24px;
+}
+
+.search-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr auto;
+  gap:12px;
+  align-items:end;
+}
+
+.field{min-width:0}
+
+.field label{
+  display:block;
+  font-size:11px;
+  color:#c9c1b2;
+  margin-bottom:7px;
+}
+
+input,select,textarea{
+  width:100%;
+  min-width:0;
+  background:#0a0a0a;
+  color:var(--white);
+  border:1px solid #302d27;
+  border-radius:4px;
+  padding:12px;
+  outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:var(--gold);
+}
+
+input::placeholder,textarea::placeholder{color:#77736b}
+select option{background:#111;color:white}
+
+.cars-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+
+.car-card{
+  min-width:0;
+  background:#111;
+  border:1px solid #28251f;
+  overflow:hidden;
+  transition:.25s;
+}
+
+.car-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  box-shadow:0 15px 35px #0008;
+}
+
+.car-photo{
+  height:220px;
+  position:relative;
+  background:
+    radial-gradient(ellipse at center,#d6ad6017,transparent 65%),
+    #171717;
+  overflow:hidden;
+}
+
+.car-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.photo-placeholder{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:#746c5d;
+  gap:8px;
+}
+
+.photo-placeholder svg{width:115px}
+
+.photo-placeholder span{
+  direction:ltr;
+  letter-spacing:3px;
+  font-size:10px;
+}
+
+.status{
+  position:absolute;
+  top:12px;
+  right:12px;
+  padding:4px 10px;
+  font-size:10px;
+  background:#080808e8;
+  border:1px solid var(--border);
+  color:var(--gold-light);
+}
+
+.status.sold{color:#ff9292}
+
+.car-info{padding:17px}
+
+.car-title{
+  font-size:18px;
+  font-weight:900;
+  overflow-wrap:anywhere;
+}
+
+.car-details{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:12px 0;
+}
+
+.detail{
+  background:#1e1e1e;
+  border:1px solid #2c2c2c;
+  color:#bcb6aa;
+  padding:4px 8px;
+  font-size:10px;
+}
+
+.price{
+  font-size:24px;
+  font-weight:900;
+  color:var(--gold);
+  margin:12px 0;
+}
+
+.price small{
+  color:#aaa;
+  font-size:11px;
+  font-weight:normal;
+}
+
+.description{
+  color:#99948a;
+  font-size:12px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  margin:10px 0 14px;
+}
+
+.phone{
+  color:#c9c2b5;
+  font-size:12px;
+  margin-bottom:12px;
+  direction:ltr;
+  text-align:right;
+}
+
+.car-actions{
+  border-top:1px solid #29251f;
+  padding-top:13px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.car-actions .btn{
+  flex:1 1 auto;
+  padding:9px;
+  font-size:11px;
+}
+
+.empty-state{
+  grid-column:1/-1;
+  border:1px dashed #3a3429;
+  padding:45px 15px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.empty-state strong{
+  display:block;
+  font-size:18px;
+  color:var(--white);
+  margin-bottom:8px;
+}
+
+.add-section{padding:25px 0 60px}
+
+.form-panel{
+  border:1px solid var(--border);
+  background:linear-gradient(145deg,#151515,#0d0d0d);
+  padding:26px;
+}
+
+.form-heading{margin-bottom:23px}
+.form-heading h2{font-size:25px}
+.form-heading p{font-size:12px;color:var(--muted)}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:17px;
+}
+
+.full{grid-column:1/-1}
+textarea{resize:vertical;min-height:105px}
+
+.note{
+  font-size:11px;
+  color:#aaa18e;
+  margin-top:6px;
+}
+
+.form-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:21px;
+}
+
+.notice{
+  margin-top:18px;
+  padding:12px 14px;
+  background:#19160f;
+  border-right:3px solid var(--gold);
+  color:#c6bda9;
+  font-size:11px;
+  line-height:2;
+}
+
+footer{
+  border-top:1px solid var(--border);
+  background:#0b0b0b;
+  padding:27px 0;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.footer-brand{
+  direction:ltr;
+  font-weight:900;
+  letter-spacing:2px;
+  color:var(--gold);
+  font-size:20px;
+}
+
+.footer-inner p{color:var(--muted);font-size:11px}
+
+.toast{
+  position:fixed;
+  z-index:500;
+  bottom:20px;
+  left:50%;
+  transform:translate(-50%,100px);
+  opacity:0;
+  pointer-events:none;
+  background:#1b1914;
+  color:white;
+  border:1px solid var(--gold);
+  padding:12px 20px;
+  max-width:90%;
+  font-size:12px;
+  transition:.25s;
+}
+
+.toast.show{
+  transform:translate(-50%,0);
+  opacity:1;
+}
+
+[hidden]{display:none!important}
+
+@media(max-width:900px){
+  .hero-box{grid-template-columns:1fr}
+  .hero-content{padding:30px 26px 0}
+  .hero-visual{max-width:560px;width:100%;margin:auto}
+  .hero-visual .car-art{max-height:250px}
+  .cars-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:560px){
+  .container{width:94%}
+  .nav{min-height:70px;gap:8px}
+  .brand-logo{width:39px;height:35px}
+  .brand-name{font-size:16px}
+  .brand small{font-size:8px;letter-spacing:1px}
+  .nav-links{display:none}
+  .nav .btn{padding:9px 10px;font-size:10px}
+  .topbar{font-size:9px}
+  .hero{padding:20px 0 30px}
+  .hero-content{padding:24px 18px 0}
+  .hero h1{font-size:35px}
+  .hero p{font-size:12px}
+  .hero-visual{padding:10px}
+  .hero-bottom{gap:17px}
+  .hero-stat strong{font-size:14px}
+  .section-heading h2{font-size:22px}
+  .search-panel{padding:13px}
+  .search-grid{grid-template-columns:1fr}
+  .cars-grid{grid-template-columns:1fr}
+  .car-photo{height:235px}
+  .form-panel{padding:17px}
+  .form-grid{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .footer-inner{justify-content:center;text-align:center}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>منصة بيع وشراء السيارات في ليبيا</span>
+    <span>YOUR NEXT CAR STARTS HERE</span>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand">
+      <svg class="brand-logo" viewBox="0 0 120 75" fill="none">
+        <path d="M8 48L20 43L35 20Q39 14 49 14H79Q87 14 95 25L106 41L115 46V58H6V51Z" fill="#d6ad60"/>
+        <path d="M39 21H60V39H27ZM65 21H79Q85 22 91 32L96 39H65Z" fill="#101010"/>
+        <path d="M7 47H24M98 45H115" stroke="#fff1c8" stroke-width="4"/>
+        <circle cx="29" cy="57" r="12" fill="#080808" stroke="#d6ad60" stroke-width="4"/>
+        <circle cx="94" cy="57" r="12" fill="#080808" stroke="#d6ad60" stroke-width="4"/>
+        <circle cx="29" cy="57" r="4" fill="#e9e5dc"/>
+        <circle cx="94" cy="57" r="4" fill="#e9e5dc"/>
+      </svg>
+      <div>
+        <div class="brand-name">CAR <span>LIBYA</span></div>
+        <small>LUXURY AUTOMOTIVE MARKET</small>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#">الرئيسية</a>
+      <a href="#cars">السيارات</a>
+      <a href="#addCar">بيع سيارتك</a>
+    </nav>
+
+    <a href="#addCar" class="btn btn-gold">＋ أضف إعلان</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="hero-box">
+      <div class="hero-content">
+        <div class="eyebrow">THE LIBYAN AUTOMOTIVE MARKET</div>
+        <h1>اختار سيارتك.<span>عيش التجربة.</span></h1>
+        <p>
+          تبي تبيع سيارتك ولا تدور على وحدة تناسبك؟
+          اكتشف الإعلانات، قارن الأسعار، وتواصل مع البايع بكل سهولة.
+          سيارتك الجاية تبدأ من هني.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#cars" class="btn btn-gold">اكتشف السيارات ←</a>
+          <a href="#addCar" class="btn btn-outline">اعرض سيارتك للبيع</a>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="hero-stat">
+            <strong id="heroCount">0</strong>
+            <small>إعلان سيارة</small>
+          </div>
+          <div class="hero-stat">
+            <strong>24/7</strong>
+            <small>تصفح الإعلانات</small>
+          </div>
+          <div class="hero-stat">
+            <strong>LIBYA</strong>
+            <small>السوق الليبي</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <svg class="car-art" viewBox="0 0 650 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="سيارة رياضية">
+          <defs>
+            <linearGradient id="paint" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#f4d89a"/>
+              <stop offset=".3" stop-color="#c89a4b"/>
+              <stop offset=".65" stop-color="#7e5724"/>
+              <stop offset="1" stop-color="#33200e"/>
+            </linearGradient>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#d2e8f2"/>
+              <stop offset=".5" stop-color="#405365"/>
+              <stop offset="1" stop-color="#10151c"/>
+            </linearGradient>
+            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#f5dba2"/>
+              <stop offset="1" stop-color="#8b642e"/>
+            </linearGradient>
+          </defs>
+
+          <ellipse cx="325" cy="280" rx="255" ry="23" fill="#000" opacity=".65"/>
+          <ellipse cx="325" cy="279" rx="220" ry="4" fill="#d6ad60" opacity=".55"/>
+
+          <path d="M37 222L64 197L131 182L201 125Q220 109 254 108L370 108Q407 110 438 144L485 178L557 198L592 221L582 251H42Z"
+                fill="url(#paint)" stroke="#f4d89a" stroke-width="2"/>
+
+          <path d="M212 130Q230 117 256 116H300V172H161Z"
+                fill="url(#glass)" stroke="#f5dba2" stroke-width="2"/>
+
+          <path d="M310 116H368Q397 119 422 148L441 172H310Z"
+                fill="url(#glass)" stroke="#f5dba2" stroke-width="2"/>
+
+          <path d="M305 117V174" stroke="#50391c" stroke-width="7"/>
+          <path d="M45 220L108 213L122 224L48 230Z" fill="#fff0bf"/>
+          <path d="M535 209L582 220L576 234L532 228Z" fill="#e83c45"/>
+          <path d="M128 207L472 207" stroke="#ffe5a0" stroke-width="3"/>
+
+          <path d="M78 247L94 261H132L145 247M475 247L490 261H528L542 247" fill="#080808"/>
+
+          <circle cx="119" cy="247" r="42" fill="#080808" stroke="#3e3e3e" stroke-width="5"/>
+          <circle cx="119" cy="247" r="28" fill="#171717" stroke="url(#rim)" stroke-width="4"/>
+          <circle cx="119" cy="247" r="9" fill="#dedbd3"/>
+          <g stroke="#b6a17b" stroke-width="4">
+            <path d="M119 221V273M93 247H145M101 229L137 265M137 229L101 265"/>
+          </g>
+
+          <circle cx="500" cy="247" r="42" fill="#080808" stroke="#3e3e3e" stroke-width="5"/>
+          <circle cx="500" cy="247" r="28" fill="#171717" stroke="url(#rim)" stroke-width="4"/>
+          <circle cx="500" cy="247" r="9" fill="#dedbd3"/>
+          <g stroke="#b6a17b" stroke-width="4">
+            <path d="M500 221V273M474 247H526M482 229L518 265M518 229L482 265"/>
+          </g>
+          <path d="M65 275H585" stroke="#d6ad60" stroke-width="1" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cars">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="section-tag">EXPLORE THE COLLECTION</div>
+        <h2>السيارات <span class="gold">المعروضة</span></h2>
+        <p>اكتشف السيارات المتوفرة واختار اللي تناسبك.</p>
+      </div>
+      <a href="#addCar" class="btn btn-outline">＋ أضف سيارتك</a>
+    </div>
+
+    <div class="search-panel">
+      <div class="search-grid">
+        <div class="field">
+          <label for="searchInput">ابحث عن سيارة</label>
+          <input id="searchInput" type="search" placeholder="الماركة، الموديل أو الوصف">
+        </div>
+
+        <div class="field">
+          <label for="cityFilter">المدينة</label>
+          <select id="cityFilter">
+            <option value="">كل المدن</option>
+            <option>طرابلس</option>
+            <option>الخمس</option>
+            <option>مصراتة</option>
+            <option>زليتن</option>
+            <option>الزاوية</option>
+            <option>بنغازي</option>
+            <option>سبها</option>
+            <option>سرت</option>
+            <option>غريان</option>
+            <option>ترهونة</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="statusFilter">حالة الإعلان</label>
+          <select id="statusFilter">
+            <option value="available">المتاحة للبيع</option>
+            <option value="all">كل الإعلانات</option>
+            <option value="sold">المباعة</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn btn-gold" id="clearSearch">إعادة ضبط</button>
+      </div>
+    </div>
+
+    <div class="cars-grid" id="carsGrid"></div>
+  </div>
+</section>
+
+<section class="add-section" id="addCar">
+  <div class="container">
+    <div class="form-panel">
+      <div class="form-heading">
+        <div class="section-tag">SELL YOUR CAR</div>
+        <h2 id="formHeading">اعرض سيارتك <span class="gold">للبيع</span></h2>
+        <p>أضف بيانات سيارتك وخلي المهتمين يتواصلوا معاك.</p>
+      </div>
+
+      <form id="carForm">
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="make">ماركة السيارة *</label>
+            <input id="make" required maxlength="40" placeholder="Toyota">
+          </div>
+
+          <div class="field">
+            <label for="model">الموديل *</label>
+            <input id="model" required maxlength="50" placeholder="Camry">
+          </div>
+
+          <div class="field">
+            <label for="year">سنة الصنع *</label>
+            <select id="year" required></select>
+          </div>
+
+          <div class="field">
+            <label for="price">السعر بالدينار الليبي *</label>
+            <input id="price" type="number" required min="1" placeholder="45000">
+          </div>
+
+          <div class="field">
+            <label for="city">المدينة *</label>
+            <input id="city" required maxlength="40" placeholder="طرابلس">
+          </div>
+
+          <div class="field">
+            <label for="condition">حالة السيارة</label>
+            <select id="condition">
+              <option value="مستعملة">مستعملة</option>
+              <option value="جديدة">جديدة</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="phone">رقم الهاتف *</label>
+            <input id="phone" type="tel" required maxlength="25" placeholder="0912345678">
+          </div>
+
+          <div class="field">
+            <label for="images">صور السيارة</label>
+            <input id="images" type="file" accept="image/*" multiple>
+            <div class="note">حتى 3 صور. اختار صور واضحة للسيارة.</div>
+          </div>
+
+          <div class="field full">
+            <label for="description">تفاصيل إضافية</label>
+            <textarea id="description" maxlength="1000" placeholder="الممشى، حالة المحرك، نوع الوقود وأي تفاصيل أخرى..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-gold" id="submitButton">نشر إعلان السيارة</button>
+          <button type="button" class="btn btn-dark" id="cancelEdit" hidden>إلغاء التعديل</button>
+          <button type="reset" class="btn btn-outline" id="resetButton">مسح البيانات</button>
+        </div>
+      </form>
+
+      <div class="notice">
+        تنبيه: الإعلانات في هذه النسخة محفوظة في المتصفح الحالي فقط.
+        لكي تظهر إعلانات جميع المستخدمين لبعضهم، نحتاج إلى ربط قاعدة بيانات مشتركة.
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">CAR LIBYA</div>
+      <p>وجهتك لبيع وشراء السيارات في ليبيا.</p>
+    </div>
+    <p>© <span id="currentYear"></span> CAR LIBYA</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
