@@ -2,107 +2,317 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CAR LIBYA | كار ليبيا</title>
-<meta name="description" content="سوق السيارات في ليبيا للبيع والشراء">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>CAR LIBYA | سوق السيارات الليبي</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#101010;color:white;font-family:Arial,sans-serif}
-header{text-align:center;background:#050505;padding:25px;border-bottom:3px solid #d4af37}
-.logo{font-size:32px;color:#d4af37;font-weight:bold}
-nav{text-align:center;padding:15px}
-button{background:#d4af37;color:#111;border:0;border-radius:7px;padding:12px;margin:4px;font-weight:bold;cursor:pointer}
-main{max-width:950px;margin:auto;padding:15px}
-.hero{text-align:center;padding:25px;background:#1c1c1c;border:1px solid #d4af37;border-radius:12px}
-h2{color:#d4af37}
-input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;background:#292929;color:white;border:1px solid #555;border-radius:7px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
-.card{background:#202020;border:1px solid #555;border-radius:10px;padding:15px;overflow-wrap:anywhere}
-.price{color:#d4af37;font-size:22px;font-weight:bold}
-.hidden{display:none}
-.small{color:#bbb;font-size:13px}
-footer{text-align:center;padding:25px;color:#aaa}
+:root {
+  --gold: #d6ad55;
+  --black: #080808;
+  --card: #171717;
+  --white: #fff;
+  --gray: #aaa;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--black);
+  color: var(--white);
+}
+header {
+  background: #101010;
+  border-bottom: 2px solid var(--gold);
+  padding: 20px 14px;
+  text-align: center;
+}
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+header p { color: #ccc; margin: 8px 0 0; }
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: #111;
+  flex-wrap: wrap;
+}
+button, .btn {
+  background: var(--gold);
+  color: #111;
+  border: none;
+  padding: 11px 14px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover, .btn:hover { opacity: .85; }
+.container {
+  width: min(1100px, 94%);
+  margin: 22px auto;
+}
+.hero {
+  text-align: center;
+  padding: 28px 12px;
+  border: 1px solid #40341d;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #17130b, #090909);
+}
+.hero h1 { color: var(--gold); margin-top: 0; }
+.hero p { color: #ccc; line-height: 1.8; }
+.section-title {
+  color: var(--gold);
+  margin: 28px 0 16px;
+}
+.search-box, .form-box {
+  background: var(--card);
+  border: 1px solid #333;
+  padding: 17px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 7px 0 12px;
+  border: 1px solid #444;
+  border-radius: 7px;
+  background: #0d0d0d;
+  color: white;
+  font-size: 15px;
+}
+label { color: #ddd; font-size: 14px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 17px;
+}
+.car-card {
+  background: var(--card);
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.car-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #222;
+}
+.car-info { padding: 14px; }
+.car-info h3 { color: var(--gold); margin-top: 0; }
+.price {
+  color: var(--gold);
+  font-size: 21px;
+  font-weight: bold;
+}
+.details {
+  color: #ccc;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.badge {
+  display: inline-block;
+  background: #164c2a;
+  color: #fff;
+  padding: 6px 9px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.sold { background: #742222; }
+.actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.actions button { flex: 1; min-width: 85px; }
+.whatsapp { background: #25d366; }
+.delete { background: #b82d2d; color: white; }
+.secondary { background: #444; color: white; }
+.hidden { display: none !important; }
+.empty {
+  text-align: center;
+  color: #aaa;
+  padding: 30px 10px;
+}
+.note {
+  color: #bbb;
+  font-size: 13px;
+  line-height: 1.8;
+}
+footer {
+  text-align: center;
+  padding: 25px 10px;
+  border-top: 1px solid #333;
+  color: #999;
+  margin-top: 35px;
+}
+@media (max-width: 450px) {
+  .logo { font-size: 27px; }
+  .container { width: 93%; }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">CAR LIBYA</div>
-<p>سوق السيارات الليبي</p>
+  <div class="logo">CAR LIBYA</div>
+  <p>منصتك لبيع وشراء السيارات في ليبيا</p>
 </header>
+
 <nav>
-<button onclick="show('list')">السيارات المعروضة</button>
-<button onclick="show('add')">أضف إعلانك</button>
-<button onclick="show('about')">عن الموقع</button>
+  <button onclick="goTo('carsSection')">السيارات</button>
+  <button onclick="goTo('addSection')">أضف إعلانك</button>
+  <button onclick="goTo('aboutSection')">عن الموقع</button>
 </nav>
-<main>
-<section class="hero">
-<h1>سيارتك القادمة تبدأ من هنا 🚘</h1>
-<p>بيع واشري سيارتك في ليبيا بكل سهولة</p>
-<button onclick="show('add')">أضف إعلان سيارتك</button>
-</section>
 
-<section id="list">
-<h2>السيارات المعروضة للبيع</h2>
-<input id="search" placeholder="ابحث عن سيارة أو موديل..." oninput="render()">
-<select id="city" onchange="render()">
-<option value="">كل المدن</option>
-<option>طرابلس</option><option>بنغازي</option><option>الخمس</option>
-<option>مصراتة</option><option>الزاوية</option><option>سبها</option>
-</select>
-<div id="cars" class="grid"></div>
-<p id="empty" class="small"></p>
-</section>
+<main class="container">
 
-<section id="add" class="hidden">
-<h2>أضف إعلان سيارتك</h2>
-<form id="form">
-<label>ماركة السيارة</label>
-<select id="brand" required>
-<option value="">اختر الماركة</option>
-<option>Toyota</option><option>Hyundai</option><option>Kia</option>
-<option>Mercedes</option><option>BMW</option><option>Honda</option>
-<option>Nissan</option><option>أخرى</option>
-</select>
-<label>موديل السيارة</label>
-<input id="model" placeholder="مثال: Elantra" required>
-<label>سنة الصنع</label>
-<input id="year" type="number" min="1980" max="2035" required>
-<label>السعر بالدينار الليبي</label>
-<input id="price" type="number" min="1" required>
-<label>المدينة</label>
-<select id="newcity" required>
-<option value="">اختر المدينة</option>
-<option>طرابلس</option><option>بنغازي</option><option>الخمس</option>
-<option>مصراتة</option><option>الزاوية</option><option>سبها</option>
-</select>
-<label>رقم واتساب مع مفتاح الدولة</label>
-<input id="phone" placeholder="2189XXXXXXXX" required>
-<label>وصف السيارة</label>
-<textarea id="details" placeholder="حالة السيارة ومواصفاتها"></textarea>
-<button type="submit">حفظ الإعلان</button>
-</form>
-<p class="small">ملاحظة: هذه نسخة تجريبية تحفظ الإعلانات على نفس الجهاز فقط.</p>
-</section>
+  <section class="hero">
+    <h1>سيارتك القادمة تبدأ من هنا</h1>
+    <p>اكتشف السيارات المعروضة للبيع في ليبيا، أو أضف إعلان سيارتك بكل سهولة.</p>
+    <button onclick="goTo('addSection')">أضف سيارتك الآن</button>
+  </section>
 
-<section id="about" class="hidden">
-<h2>عن CAR LIBYA</h2>
-<p>منصة تجريبية لتسهيل بيع وشراء السيارات في ليبيا.</p>
-<p>هدفنا جمع إعلانات السيارات في مكان واحد بتصميم عربي عصري.</p>
-</section>
+  <section id="addSection">
+    <h2 class="section-title" id="formTitle">إضافة إعلان سيارة</h2>
+
+    <form id="carForm" class="form-box">
+      <label>ماركة السيارة *</label>
+      <input id="brand" placeholder="مثال: تويوتا" required>
+
+      <label>موديل السيارة *</label>
+      <input id="model" placeholder="مثال: كامري" required>
+
+      <label>سنة الصنع *</label>
+      <input id="year" type="number" min="1950" max="2035"
+             placeholder="مثال: 2020" required>
+
+      <label>السعر بالدينار الليبي *</label>
+      <input id="price" type="number" min="1"
+             placeholder="مثال: 65000" required>
+
+      <label>المدينة *</label>
+      <select id="city" required>
+        <option value="">اختر المدينة</option>
+        <option>طرابلس</option>
+        <option>الخمس</option>
+        <option>مصراتة</option>
+        <option>بنغازي</option>
+        <option>زليتن</option>
+        <option>الزاوية</option>
+        <option>سبها</option>
+        <option>سرت</option>
+        <option>غريان</option>
+        <option>درنة</option>
+        <option>طبرق</option>
+        <option>مدينة أخرى</option>
+      </select>
+
+      <label>رقم واتساب مع مفتاح الدولة *</label>
+      <input id="phone" type="tel" placeholder="2189XXXXXXXX"
+             inputmode="tel" required>
+
+      <label>صور السيارة</label>
+      <input id="photos" type="file" accept="image/*" multiple>
+      <p class="note">اختر صورًا واضحة. لتسهيل الرفع، سيتم تصغير الصور تلقائيًا.</p>
+      <div id="photoMessage" class="note"></div>
+
+      <label>تفاصيل السيارة</label>
+      <textarea id="details" rows="4"
+        placeholder="حالة السيارة، نوع المحرك، ناقل الحركة وأي معلومات أخرى"></textarea>
+
+      <button id="saveButton" type="submit">نشر الإعلان</button>
+      <button type="button" class="secondary hidden"
+              id="cancelEdit" onclick="cancelEditing()">إلغاء التعديل</button>
+    </form>
+  </section>
+
+  <section id="carsSection">
+    <h2 class="section-title">السيارات المعروضة للبيع</h2>
+
+    <div class="search-box">
+      <input id="search" placeholder="ابحث عن ماركة أو موديل أو مدينة...">
+      <select id="cityFilter">
+        <option value="">كل المدن</option>
+        <option>طرابلس</option>
+        <option>الخمس</option>
+        <option>مصراتة</option>
+        <option>بنغازي</option>
+        <option>زليتن</option>
+        <option>الزاوية</option>
+        <option>سبها</option>
+        <option>سرت</option>
+        <option>غريان</option>
+        <option>درنة</option>
+        <option>طبرق</option>
+        <option>مدينة أخرى</option>
+      </select>
+      <select id="statusFilter">
+        <option value="all">كل الإعلانات</option>
+        <option value="available">المتاحة للبيع</option>
+        <option value="sold">تم البيع</option>
+      </select>
+    </div>
+
+    <div id="carsGrid" class="grid"></div>
+    <div id="emptyMessage" class="empty hidden">لا توجد إعلانات مطابقة للبحث.</div>
+  </section>
+
+  <section id="aboutSection">
+    <h2 class="section-title">عن CAR LIBYA</h2>
+    <div class="form-box">
+      <p class="details">
+        CAR LIBYA منصة تهدف إلى تسهيل بيع وشراء السيارات في ليبيا،
+        وتمكين البائعين من عرض سياراتهم والتواصل مع المشترين عبر واتساب.
+      </p>
+      <p class="note">
+        تنبيه: تأكد من حالة السيارة وأوراقها قبل إتمام عملية الشراء.
+      </p>
+    </div>
+  </section>
+
 </main>
-<footer>© CAR LIBYA - سوق السيارات الليبي</footer>
+
+<footer>
+  CAR LIBYA © 2026 — سوق السيارات الليبي
+</footer>
 
 <script>
-let cars=[];
-try{cars=JSON.parse(localStorage.getItem('carLibya')||'[]')}catch(e){}
-function save(){localStorage.setItem('carLibya',JSON.stringify(cars))}
-function show(id){
-['list','add','about'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));
-if(id==='list')render();
-window.scrollTo(0,0);
+const STORAGE_KEY = "carLibya";
+let cars = [];
+let editingId = null;
+let selectedImages = [];
+
+try {
+  cars = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  if (!Array.isArray(cars)) cars = [];
+} catch (e) {
+  cars = [];
 }
-function render(){
-let q=document.getElementById('search').value.toLowerCase();
-let city=document.getElementById('city').value;
-let result=cars.filter(c=>(c.brand+' '+c.model+' '+c.year).toLowerCase().includes(q)&&(!city||c.city===city));
-let box=document.getElementById('cars');
+
+const $ = id => document.getElementById(id);
+
+function saveCars() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cars));
+    return true;
+  } catch (e) {
+    alert("مساحة التخزين غير كافية. جرّب صورًا أقل أو أصغر.");
+    return false;
+  }
+}
+
+function goTo(id) {
+  $(id).scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function
