@@ -3,171 +3,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-<title>CAR LIBYA | سوق السيارات الليبي</title>
+<meta name="theme-color" content="#0b0b0b">
+<title>CAR LIBYA | كار ليبيا</title>
 
 <style>
 :root {
   --gold: #d6ad55;
-  --black: #080808;
-  --card: #171717;
-  --white: #fff;
-  --green: #25d366;
-  --red: #c73535;
+  --gold-light: #f4d58b;
+  --black: #0b0b0b;
+  --panel: #171717;
+  --text: #ffffff;
+  --muted: #b8b8b8;
+  --green: #20b866;
+  --red: #e34c4c;
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   background: var(--black);
-  color: var(--white);
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.7;
 }
+
 header {
+  background: #080808;
+  border-bottom: 1px solid #393020;
+  padding: 18px 14px;
   text-align: center;
-  padding: 25px 12px;
-  background: #101010;
-  border-bottom: 2px solid var(--gold);
 }
+
 .logo {
+  font-size: 30px;
+  font-weight: 900;
   color: var(--gold);
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
-header p { color: #ccc; }
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px;
-  background: #111;
+
+.logo span {
+  color: white;
 }
-button {
-  background: var(--gold);
-  color: #111;
-  border: none;
-  border-radius: 7px;
-  padding: 12px 15px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 14px;
+
+header p {
+  color: var(--muted);
+  margin: 3px 0 0;
+  font-size: 13px;
 }
-button:disabled { opacity: .6; }
-.container {
-  width: min(1100px, 94%);
-  margin: 22px auto;
-}
+
 .hero {
   text-align: center;
-  padding: 30px 15px;
-  border: 1px solid #49391b;
-  border-radius: 12px;
-  background: linear-gradient(135deg,#211a0d,#090909);
+  padding: 35px 15px;
+  background: linear-gradient(145deg, #19160f, #090909 70%);
+  border-bottom: 1px solid #292318;
 }
-.hero h1, .section-title { color: var(--gold); }
-.hero p, .details { color: #ccc; line-height: 1.9; }
-.section-title { margin: 30px 0 15px; }
-.form-box, .search-box {
-  background: var(--card);
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 17px;
-  margin-bottom: 20px;
+
+.hero h1 {
+  font-size: clamp(24px, 5vw, 38px);
+  margin: 0 0 8px;
 }
-label {
-  display: block;
-  color: #ddd;
-  font-size: 14px;
-  margin-top: 8px;
+
+.hero h1 span {
+  color: var(--gold);
 }
-input, select, textarea {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin: 7px 0 13px;
-  border: 1px solid #444;
-  border-radius: 7px;
-  background: #0d0d0d;
-  color: white;
-  font-size: 16px;
+
+.hero p {
+  color: #ccc;
+  margin: 0 auto 18px;
+  max-width: 600px;
 }
-.note {
-  color: #aaa;
-  font-size: 13px;
-  line-height: 1.8;
+
+.container {
+  max-width: 1100px;
+  padding: 18px 12px 40px;
+  margin: auto;
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(245px,1fr));
-  gap: 17px;
-}
-.car-card {
-  background: var(--card);
-  border: 1px solid #333;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.car-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  background: #222;
-}
-.car-info { padding: 14px; }
-.car-info h3 { color: var(--gold); }
-.price {
+
+.section-title {
   color: var(--gold);
   font-size: 22px;
-  font-weight: bold;
   margin: 12px 0;
 }
-.badge {
-  display: inline-block;
-  background: #164c2a;
-  padding: 6px 9px;
-  border-radius: 5px;
-  margin-bottom: 8px;
+
+.panel {
+  background: var(--panel);
+  border: 1px solid #37312a;
+  border-radius: 14px;
+  padding: 17px;
+  margin-bottom: 22px;
 }
-.sold { background: #742222; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 13px;
+  color: #e8d7b2;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #454545;
+  border-radius: 8px;
+  background: #0e0e0e;
+  color: white;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+}
+
+input[type="file"] {
+  font-size: 12px;
+}
+
+button, .button {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: .2s;
+}
+
+button:hover, .button:hover {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+
+.primary {
+  background: var(--gold);
+  color: #111;
+}
+
+.whatsapp {
+  background: var(--green);
+  color: white;
+}
+
+.secondary {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+.danger {
+  background: var(--red);
+  color: white;
+}
+
+.sold-button {
+  background: #63552f;
+  color: white;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 8px;
   margin-top: 12px;
 }
-.actions button { flex: 1; min-width: 80px; }
-.whatsapp { background: var(--green); }
-.delete { background: var(--red); color: white; }
-.secondary { background: #444; color: white; }
-.hidden { display: none !important; }
+
+.actions > * {
+  flex: 1 1 105px;
+}
+
+#imagePreview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+#imagePreview img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #555;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.car-card {
+  background: #171717;
+  border: 1px solid #3b3325;
+  border-radius: 13px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.car-gallery {
+  background: #080808;
+  position: relative;
+}
+
+.car-image {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.no-image {
+  height: 170px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 40px;
+  background: #111;
+}
+
+.card-body {
+  padding: 14px;
+}
+
+.car-title {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+
+.price {
+  color: var(--gold-light);
+  font-size: 22px;
+  font-weight: 900;
+  margin: 5px 0 12px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  font-size: 13px;
+  color: #ddd;
+}
+
+.details div {
+  background: #222;
+  padding: 7px;
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+
+.phone-box {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #3a553f;
+  border-radius: 9px;
+  background: #102016;
+}
+
+.phone-label {
+  color: #c6d6c9;
+  font-size: 12px;
+}
+
+.phone-number {
+  display: block;
+  direction: ltr;
+  text-align: right;
+  unicode-bidi: plaintext;
+  color: #fff;
+  font-size: 19px;
+  font-weight: bold;
+  margin: 3px 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.status {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: #264e35;
+  color: #a5f2bc;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.status.sold {
+  background: #512b2b;
+  color: #ffbaba;
+}
+
 .empty {
   text-align: center;
-  padding: 25px;
-  color: #aaa;
+  color: var(--muted);
+  padding: 30px 10px;
+  background: #151515;
+  border-radius: 10px;
+  grid-column: 1 / -1;
 }
+
+.notice {
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 10px;
+}
+
 footer {
   text-align: center;
-  padding: 25px 10px;
-  border-top: 1px solid #333;
-  color: #999;
-  line-height: 1.8;
+  padding: 22px 10px;
+  border-top: 1px solid #30291d;
+  color: #aaa;
+  font-size: 12px;
 }
-#photoPreview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-#photoPreview img {
-  width: 90px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-@media(max-width:450px) {
-  .logo { font-size: 27px; }
-  .grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 23px; }
+
+@media (max-width: 650px) {
+  .form-grid, .cars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .car-image {
+    height: 220px;
+  }
+
+  .logo {
+    font-size: 26px;
+  }
 }
 </style>
 </head>
@@ -175,461 +367,578 @@ footer {
 <body>
 
 <header>
-  <div class="logo">CAR LIBYA</div>
-  <p>منصتك لبيع وشراء السيارات في ليبيا</p>
+  <div class="logo">CAR <span>LIBYA</span></div>
+  <p>كار ليبيا — سوق السيارات الليبي</p>
 </header>
 
-<nav>
-  <button type="button" onclick="goTo('carsSection')">السيارات</button>
-  <button type="button" onclick="goTo('addSection')">أضف إعلانك</button>
-  <button type="button" onclick="goTo('aboutSection')">عن الموقع</button>
-</nav>
+<section class="hero">
+  <h1>سيارتك القادمة <span>تبدأ من هنا</span></h1>
+  <p>اعرض سيارتك للبيع، واكتشف السيارات المتاحة، وتواصل مباشرة مع البائع عبر واتساب.</p>
+  <a class="button primary" href="#addCar">أضف إعلان سيارتك</a>
+</section>
 
 <main class="container">
 
-<section class="hero">
-  <h1>سيارتك القادمة تبدأ من هنا</h1>
-  <p>اكتشف السيارات المعروضة للبيع في ليبيا، أو أضف إعلان سيارتك بكل سهولة.</p>
-  <button type="button" onclick="goTo('addSection')">أضف سيارتك الآن</button>
-</section>
+  <section id="addCar">
+    <h2 class="section-title" id="formTitle">🚘 أضف إعلان سيارة</h2>
 
-<section id="addSection">
-  <h2 class="section-title" id="formTitle">إضافة إعلان سيارة</h2>
+    <form class="panel" id="carForm">
+      <div class="form-grid">
 
-  <form id="carForm" class="form-box">
-    <label for="brand">ماركة السيارة *</label>
-    <input id="brand" placeholder="مثال: تويوتا" required>
+        <div class="field">
+          <label for="brand">ماركة السيارة *</label>
+          <input id="brand" required placeholder="مثال: تويوتا">
+        </div>
 
-    <label for="model">موديل السيارة *</label>
-    <input id="model" placeholder="مثال: كامري" required>
+        <div class="field">
+          <label for="model">موديل السيارة *</label>
+          <input id="model" required placeholder="مثال: كامري">
+        </div>
 
-    <label for="year">سنة الصنع *</label>
-    <input id="year" type="number" min="1950" max="2035" placeholder="2020" required>
+        <div class="field">
+          <label for="year">سنة الصنع *</label>
+          <input id="year" type="number" required min="1950"
+                 max="2035" placeholder="2020">
+        </div>
 
-    <label for="price">السعر بالدينار الليبي *</label>
-    <input id="price" type="number" min="1" placeholder="65000" required>
+        <div class="field">
+          <label for="price">السعر بالدينار الليبي *</label>
+          <input id="price" type="number" required min="0"
+                 placeholder="35000">
+        </div>
 
-    <label for="city">المدينة *</label>
-    <select id="city" required>
-      <option value="">اختر المدينة</option>
-      <option>طرابلس</option>
-      <option>الخمس</option>
-      <option>مصراتة</option>
-      <option>بنغازي</option>
-      <option>زليتن</option>
-      <option>الزاوية</option>
-      <option>سبها</option>
-      <option>سرت</option>
-      <option>غريان</option>
-      <option>درنة</option>
-      <option>طبرق</option>
-      <option>مدينة أخرى</option>
-    </select>
+        <div class="field">
+          <label for="city">المدينة *</label>
+          <select id="city" required>
+            <option value="">اختر المدينة</option>
+            <option>طرابلس</option>
+            <option>الخمس</option>
+            <option>مصراتة</option>
+            <option>بنغازي</option>
+            <option>زليتن</option>
+            <option>الزاوية</option>
+            <option>سبها</option>
+            <option>سرت</option>
+            <option>درنة</option>
+            <option>طبرق</option>
+            <option>مدينة أخرى</option>
+          </select>
+        </div>
 
-    <label for="phone">رقم واتساب مع مفتاح الدولة *</label>
-    <input id="phone" type="tel" inputmode="tel" placeholder="2189XXXXXXXX" required>
+        <div class="field">
+          <label for="condition">حالة السيارة *</label>
+          <select id="condition" required>
+            <option value="مستعملة">مستعملة</option>
+            <option value="جديدة">جديدة</option>
+          </select>
+        </div>
 
-    <label for="photos">صور السيارة (3 صور كحد أقصى)</label>
-    <input id="photos" type="file" accept="image/*" multiple>
-    <div id="photoMessage" class="note"></div>
-    <div id="photoPreview"></div>
+        <div class="field full">
+          <label for="phone">رقم هاتف البائع *</label>
+          <input id="phone" type="tel" required
+                 inputmode="tel" autocomplete="tel"
+                 placeholder="مثال: 0912345678">
+          <small class="notice">
+            أدخل رقم هاتفك الصحيح. سيظهر الرقم داخل الإعلان.
+          </small>
+        </div>
 
-    <label for="details">تفاصيل السيارة</label>
-    <textarea id="details" rows="4" placeholder="حالة السيارة والمحرك وناقل الحركة..."></textarea>
+        <div class="field full">
+          <label for="description">تفاصيل إضافية</label>
+          <textarea id="description" rows="3"
+                    placeholder="حالة المحرك، ناقل الحركة، وأي معلومات أخرى"></textarea>
+        </div>
 
-    <button id="saveButton" type="submit">نشر الإعلان</button>
-    <button id="cancelEdit" type="button" class="secondary hidden" onclick="cancelEditing()">إلغاء التعديل</button>
+        <div class="field full">
+          <label for="photos">صور السيارة (حتى 3 صور)</label>
+          <input id="photos" type="file" accept="image/*" multiple>
+          <div id="imagePreview"></div>
+        </div>
 
-    <p class="note">هذه النسخة تحفظ الإعلانات على الجهاز نفسه، ولا تشاركها تلقائيًا مع بقية الزوار.</p>
-  </form>
-</section>
+      </div>
 
-<section id="carsSection">
-  <h2 class="section-title">السيارات المعروضة للبيع</h2>
+      <div class="actions">
+        <button type="submit" class="primary" id="submitButton">
+          نشر الإعلان
+        </button>
+        <button type="button" class="secondary" id="cancelEdit"
+                style="display:none">
+          إلغاء التعديل
+        </button>
+      </div>
 
-  <div class="search-box">
-    <label for="search">البحث عن سيارة</label>
-    <input id="search" placeholder="ابحث بالماركة أو الموديل أو المدينة">
+      <p class="notice">
+        تنبيه: الإعلانات محفوظة على هذا الجهاز فقط في هذه النسخة.
+      </p>
+    </form>
+  </section>
 
-    <label for="cityFilter">المدينة</label>
-    <select id="cityFilter">
-      <option value="">كل المدن</option>
-      <option>طرابلس</option>
-      <option>الخمس</option>
-      <option>مصراتة</option>
-      <option>بنغازي</option>
-      <option>زليتن</option>
-      <option>الزاوية</option>
-      <option>سبها</option>
-      <option>سرت</option>
-      <option>غريان</option>
-      <option>درنة</option>
-      <option>طبرق</option>
-      <option>مدينة أخرى</option>
-    </select>
+  <section>
+    <h2 class="section-title">🔎 ابحث عن سيارتك</h2>
 
-    <label for="statusFilter">حالة الإعلان</label>
-    <select id="statusFilter">
-      <option value="all">كل الإعلانات</option>
-      <option value="available">المتاحة للبيع</option>
-      <option value="sold">تم البيع</option>
-    </select>
-  </div>
+    <div class="panel">
+      <div class="search-grid">
+        <input id="search" placeholder="ابحث عن ماركة أو موديل أو سنة...">
 
-  <div id="carsGrid" class="grid"></div>
-  <div id="emptyMessage" class="empty hidden">لا توجد إعلانات مطابقة للبحث.</div>
-</section>
+        <select id="cityFilter">
+          <option value="">كل المدن</option>
+          <option>طرابلس</option>
+          <option>الخمس</option>
+          <option>مصراتة</option>
+          <option>بنغازي</option>
+          <option>زليتن</option>
+          <option>الزاوية</option>
+          <option>سبها</option>
+          <option>سرت</option>
+          <option>درنة</option>
+          <option>طبرق</option>
+          <option>مدينة أخرى</option>
+        </select>
+      </div>
+    </div>
+  </section>
 
-<section id="aboutSection">
-  <h2 class="section-title">عن CAR LIBYA</h2>
-  <div class="form-box">
-    <p class="details">CAR LIBYA منصة تهدف إلى تسهيل بيع وشراء السيارات في ليبيا والتواصل بين البائعين والمشترين.</p>
-    <p class="note">تأكد من حالة السيارة وأوراقها قبل إتمام عملية الشراء.</p>
-  </div>
-</section>
+  <section>
+    <h2 class="section-title">🚗 إعلانات السيارات</h2>
+    <div id="carsGrid" class="cars-grid"></div>
+  </section>
 
 </main>
 
 <footer>
-  CAR LIBYA © 2026
-  <br>سوق السيارات الليبي
+  <div class="logo">CAR <span>LIBYA</span></div>
+  <p>كار ليبيا — منصتك لبيع وشراء السيارات</p>
+  <p>© CAR LIBYA</p>
 </footer>
 
 <script>
 "use strict";
 
-const KEY = "carLibya";
+const STORAGE_KEY = "carLibya";
+
+const form = document.getElementById("carForm");
+const carsGrid = document.getElementById("carsGrid");
+const photosInput = document.getElementById("photos");
+const imagePreview = document.getElementById("imagePreview");
+const submitButton = document.getElementById("submitButton");
+const cancelEditButton = document.getElementById("cancelEdit");
+
 let cars = [];
 let editingId = null;
 let selectedImages = [];
 
-const $ = id => document.getElementById(id);
-
-try {
-  const saved = JSON.parse(localStorage.getItem(KEY) || "[]");
-  if (Array.isArray(saved)) cars = saved;
-} catch (e) {
-  cars = [];
-}
-
-function goTo(id) {
-  $(id).scrollIntoView({behavior:"smooth", block:"start"});
-}
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
-  })[c]);
-}
-
-function normalizePhone(value) {
-  let n = String(value || "").replace(/\D/g, "");
-  if (n.startsWith("00")) n = n.slice(2);
-  if (n.startsWith("0")) n = "218" + n.slice(1);
-  else if (n.startsWith("9") && n.length === 9) n = "218" + n;
-  return n;
+function loadCars() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const parsed = saved ? JSON.parse(saved) : [];
+    cars = Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.error("تعذر تحميل الإعلانات:", error);
+    cars = [];
+  }
 }
 
 function saveCars() {
   try {
-    localStorage.setItem(KEY, JSON.stringify(cars));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cars));
     return true;
-  } catch (e) {
-    alert("تعذر الحفظ. قلّل عدد الصور أو حجمها.");
+  } catch (error) {
+    alert("تعذر حفظ الإعلان. ربما مساحة التخزين ممتلئة. جرّب حذف بعض الصور.");
+    console.error(error);
     return false;
   }
 }
 
-function compressImage(file) {
-  return new Promise((resolve, reject) => {
-    if (!file.type.startsWith("image/")) {
-      reject(new Error("الملف ليس صورة."));
-      return;
-    }
+function normalizePhone(phone) {
+  return String(phone || "").replace(/[^\d+]/g, "");
+}
 
-    const reader = new FileReader();
-    reader.onerror = () => reject(new Error("تعذرت قراءة الصورة."));
+function makeWhatsAppLink(phone) {
+  let number = normalizePhone(phone).replace(/\D/g, "");
 
-    reader.onload = () => {
-      const img = new Image();
+  // تحويل الرقم الليبي المحلي إلى الصيغة الدولية.
+  if (number.startsWith("0")) {
+    number = "218" + number.slice(1);
+  } else if (number.startsWith("218")) {
+    // الرقم مكتوب بالفعل بالمفتاح الدولي.
+  } else {
+    // إذا أدخل المستخدم رقماً دون صفر البداية أو مفتاح الدولة.
+    number = "218" + number;
+  }
 
-      img.onerror = () => reject(new Error("تعذر فتح الصورة."));
+  return "https://wa.me/" + number;
+}
 
-      img.onload = () => {
-        const max = 800;
-        const ratio = Math.min(1, max / Math.max(img.width, img.height));
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.round(img.width * ratio);
-        canvas.height = Math.round(img.height * ratio);
-
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        resolve(canvas.toDataURL("image/jpeg", 0.55));
-      };
-
-      img.src = reader.result;
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function(char) {
+    const map = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
     };
-
-    reader.readAsDataURL(file);
+    return map[char];
   });
 }
 
-$("photos").addEventListener("change", async function() {
-  const files = Array.from(this.files || []).slice(0, 3);
-  selectedImages = [];
-  $("photoPreview").innerHTML = "";
-
-  if (!files.length) {
-    $("photoMessage").textContent = "";
-    return;
-  }
-
-  $("photoMessage").textContent = "جارٍ تجهيز الصور...";
-
-  try {
-    for (const file of files) {
-      selectedImages.push(await compressImage(file));
-    }
-
-    $("photoPreview").innerHTML = selectedImages
-      .map(src => `<img src="${src}" alt="معاينة الصورة">`)
-      .join("");
-
-    $("photoMessage").textContent = "تم تجهيز الصور.";
-  } catch (e) {
-    selectedImages = [];
-    $("photoMessage").textContent = e.message;
-    alert(e.message);
-  }
-});
-
-$("carForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const brand = $("brand").value.trim();
-  const model = $("model").value.trim();
-  const year = Number($("year").value);
-  const price = Number($("price").value);
-  const city = $("city").value;
-  const phone = normalizePhone($("phone").value);
-  const details = $("details").value.trim();
-
-  if (!brand || !model || !city || !phone) {
-    alert("يرجى تعبئة الحقول المطلوبة.");
-    return;
-  }
-
-  if (!Number.isInteger(year) || year < 1950 || year > 2035) {
-    alert("يرجى إدخال سنة صنع صحيحة.");
-    return;
-  }
-
-  if (!Number.isFinite(price) || price <= 0) {
-    alert("يرجى إدخال سعر صحيح.");
-    return;
-  }
-
-  if (phone.length < 10 || phone.length > 15) {
-    alert("تأكد من رقم واتساب مع مفتاح الدولة.");
-    return;
-  }
-
-  const oldCar = cars.find(c => c.id === editingId);
-
-  const car = {
-    id: editingId || (Date.now().toString(36) + Math.random().toString(36).slice(2,7)),
-    brand, model, year, price, city, phone, details,
-    images: selectedImages.length
-      ? selectedImages
-      : (oldCar && Array.isArray(oldCar.images) ? oldCar.images : []),
-    sold: oldCar ? Boolean(oldCar.sold) : false,
-    createdAt: oldCar ? oldCar.createdAt : new Date().toISOString()
-  };
-
-  const previous = cars.slice();
-
-  if (editingId) {
-    const index = cars.findIndex(c => c.id === editingId);
-    if (index === -1) {
-      alert("الإعلان غير موجود.");
-      return;
-    }
-    cars[index] = car;
-  } else {
-    cars.unshift(car);
-  }
-
-  if (!saveCars()) {
-    cars = previous;
-    return;
-  }
-
-  alert(editingId ? "تم تعديل الإعلان بنجاح." : "تم نشر الإعلان بنجاح.");
-
-  resetForm();
-  renderCars();
-  goTo("carsSection");
-});
-
-function resetForm() {
-  $("carForm").reset();
-  editingId = null;
-  selectedImages = [];
-  $("formTitle").textContent = "إضافة إعلان سيارة";
-  $("saveButton").textContent = "نشر الإعلان";
-  $("cancelEdit").classList.add("hidden");
-  $("photoMessage").textContent = "";
-  $("photoPreview").innerHTML = "";
-}
-
-function cancelEditing() {
-  resetForm();
-  goTo("carsSection");
-}
-
-function editCar(id) {
-  const car = cars.find(c => c.id === id);
-  if (!car) return;
-
-  editingId = id;
-  selectedImages = [];
-
-  $("brand").value = car.brand || "";
-  $("model").value = car.model || "";
-  $("year").value = car.year || "";
-  $("price").value = car.price || "";
-  $("city").value = car.city || "";
-  $("phone").value = car.phone || "";
-  $("details").value = car.details || "";
-
-  $("formTitle").textContent = "تعديل إعلان السيارة";
-  $("saveButton").textContent = "حفظ التعديلات";
-  $("cancelEdit").classList.remove("hidden");
-  $("photoMessage").textContent = "اختر صورًا جديدة لتغيير الصور القديمة.";
-
-  $("photoPreview").innerHTML = (car.images || [])
-    .map(src => `<img src="${src}" alt="صورة السيارة">`)
-    .join("");
-
-  $("photos").value = "";
-  goTo("addSection");
-}
-
-function deleteCar(id) {
-  if (!confirm("هل تريد حذف هذا الإعلان؟")) return;
-
-  const old = cars.slice();
-  cars = cars.filter(c => c.id !== id);
-
-  if (!saveCars()) {
-    cars = old;
-    return;
-  }
-
-  if (editingId === id) resetForm();
-
-  renderCars();
-  alert("تم حذف الإعلان.");
-}
-
-function toggleSold(id) {
-  const index = cars.findIndex(c => c.id === id);
-  if (index < 0) return;
-
-  const old = cars.slice();
-  cars[index].sold = !cars[index].sold;
-
-  if (!saveCars()) {
-    cars = old;
-    return;
-  }
-
-  renderCars();
+function formatPrice(value) {
+  return Number(value).toLocaleString("en-US") + " د.ل";
 }
 
 function renderCars() {
-  const grid = $("carsGrid");
-  const query = $("search").value.trim().toLowerCase();
-  const city = $("cityFilter").value;
-  const status = $("statusFilter").value;
+  const query = document.getElementById("search").value
+    .trim().toLowerCase();
 
-  grid.innerHTML = "";
+  const selectedCity = document.getElementById("cityFilter").value;
 
-  const filtered = cars.filter(car => {
-    const text = [car.brand, car.model, car.city, car.year, car.details]
-      .join(" ").toLowerCase();
+  const filtered = cars.filter(function(car) {
+    const searchable = [
+      car.brand,
+      car.model,
+      car.year,
+      car.city,
+      car.condition,
+      car.description
+    ].join(" ").toLowerCase();
 
-    return text.includes(query)
-      && (!city || car.city === city)
-      && (status === "all"
-          || (status === "sold" && car.sold)
-          || (status === "available" && !car.sold));
+    const matchesQuery = searchable.includes(query);
+    const matchesCity = !selectedCity || car.city === selectedCity;
+
+    return matchesQuery && matchesCity;
   });
 
-  $("emptyMessage").classList.toggle("hidden", filtered.length > 0);
+  if (filtered.length === 0) {
+    carsGrid.innerHTML =
+      '<div class="empty">لا توجد إعلانات حالياً. كن أول من يضيف سيارته!</div>';
+    return;
+  }
 
-  filtered.forEach(car => {
-    const card = document.createElement("article");
-    card.className = "car-card";
-
+  carsGrid.innerHTML = filtered.map(function(car) {
     const images = Array.isArray(car.images) ? car.images : [];
-    const picture = images.length
-      ? `<img src="${images[0]}" alt="سيارة">`
-      : `<div style="height:190px;display:grid;place-items:center;color:#aaa">لا توجد صورة</div>`;
+    const firstImage = images[0];
 
-    card.innerHTML = `
-      ${picture}
-      <div class="car-info">
-        <span class="badge ${car.sold ? "sold" : ""}">
-          ${car.sold ? "تم البيع" : "متاحة للبيع"}
-        </span>
-        <h3>${escapeHTML(car.brand)} ${escapeHTML(car.model)}</h3>
-        <p class="details">
-          سنة الصنع: ${escapeHTML(car.year)}<br>
-          المدينة: ${escapeHTML(car.city)}
-        </p>
-        <div class="price">${Number(car.price).toLocaleString("ar-LY")} د.ل</div>
-        <p class="details">${escapeHTML(car.details || "لا توجد تفاصيل إضافية.")}</p>
-        <div class="actions">
-          ${!car.sold ? `<button class="whatsapp" data-action="whatsapp" data-id="${escapeHTML(car.id)}">واتساب</button>` : ""}
-          <button class="secondary" data-action="edit" data-id="${escapeHTML(car.id)}">تعديل</button>
-          <button data-action="sold" data-id="${escapeHTML(car.id)}">${car.sold ? "إعادة للبيع" : "تم البيع"}</button>
-          <button class="delete" data-action="delete" data-id="${escapeHTML(car.id)}">حذف</button>
+    const gallery = firstImage
+      ? '<img class="car-image" src="' + firstImage +
+        '" alt="صورة سيارة ' + escapeHTML(car.brand) + '">'
+      : '<div class="no-image">🚘</div>';
+
+    const phone = String(car.phone || "").trim();
+    const phoneDisplay = phone
+      ? '<div class="phone-box">' +
+          '<div class="phone-label">📞 رقم هاتف البائع</div>' +
+          '<a class="phone-number" href="tel:' +
+            escapeHTML(normalizePhone(phone)) + '">' +
+            escapeHTML(phone) +
+          '</a>' +
+          '<a class="button whatsapp" target="_blank" rel="noopener noreferrer" href="' +
+            escapeHTML(makeWhatsAppLink(phone)) +
+            '">تواصل عبر واتساب</a>' +
+        '</div>'
+      : '<div class="phone-box">رقم الهاتف غير متوفر لهذا الإعلان القديم.</div>';
+
+    const sold = car.status === "sold";
+
+    return `
+      <article class="car-card">
+        <div class="car-gallery">${gallery}</div>
+
+        <div class="card-body">
+          <div class="status ${sold ? "sold" : ""}">
+            ${sold ? "تم البيع" : "متاحة للبيع"}
+          </div>
+
+          <h3 class="car-title">
+            ${escapeHTML(car.brand)} ${escapeHTML(car.model)}
+          </h3>
+
+          <div class="price">${formatPrice(car.price)}</div>
+
+          <div class="details">
+            <div>📅 السنة: ${escapeHTML(car.year)}</div>
+            <div>📍 المدينة: ${escapeHTML(car.city)}</div>
+            <div>⚙️ الحالة: ${escapeHTML(car.condition)}</div>
+          </div>
+
+          ${car.description
+            ? '<p>' + escapeHTML(car.description) + '</p>'
+            : ''}
+
+          ${phoneDisplay}
+
+          ${images.length > 1
+            ? '<p class="notice">عدد الصور: ' + images.length + '</p>'
+            : ''}
+
+          <div class="actions">
+            <button class="secondary" data-action="edit"
+                    data-id="${escapeHTML(car.id)}">
+              ✏️ تعديل
+            </button>
+
+            <button class="sold-button" data-action="sold"
+                    data-id="${escapeHTML(car.id)}">
+              ${sold ? "↩️ إعادة فتح الإعلان" : "✓ تم البيع"}
+            </button>
+
+            <button class="danger" data-action="delete"
+                    data-id="${escapeHTML(car.id)}">
+              🗑️ حذف
+            </button>
+          </div>
         </div>
-      </div>
+      </article>
     `;
+  }).join("");
+}
 
-    grid.appendChild(card);
+function showPreview(images) {
+  imagePreview.innerHTML = "";
+
+  images.forEach(function(src) {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "معاينة صورة السيارة";
+    imagePreview.appendChild(img);
   });
 }
 
-$("carsGrid").addEventListener("click", function(event) {
+function readImages(files) {
+  return new Promise(function(resolve, reject) {
+    const selected = Array.from(files).slice(0, 3);
+
+    if (selected.some(function(file) {
+      return !file.type.startsWith("image/");
+    })) {
+      reject(new Error("يرجى اختيار ملفات صور فقط."));
+      return;
+    }
+
+    Promise.all(selected.map(function(file) {
+      return new Promise(function(resolveImage, rejectImage) {
+        const reader = new FileReader();
+
+        reader.onload = function() {
+          const img = new Image();
+
+          img.onload = function() {
+            const maxWidth = 1000;
+            const scale = Math.min(1, maxWidth / img.width);
+
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.round(img.width * scale);
+            canvas.height = Math.round(img.height * scale);
+
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            resolveImage(canvas.toDataURL("image/jpeg", 0.72));
+          };
+
+          img.onerror = function() {
+            rejectImage(new Error("تعذر قراءة إحدى الصور."));
+          };
+
+          img.src = reader.result;
+        };
+
+        reader.onerror = function() {
+          rejectImage(new Error("تعذر تحميل إحدى الصور."));
+        };
+
+        reader.readAsDataURL(file);
+      });
+    })).then(resolve).catch(reject);
+  });
+}
+
+photosInput.addEventListener("change", async function() {
+  try {
+    if (photosInput.files.length > 3) {
+      alert("يمكنك اختيار 3 صور كحد أقصى.");
+    }
+
+    selectedImages = await readImages(photosInput.files);
+    showPreview(selectedImages);
+  } catch (error) {
+    alert(error.message || "حدث خطأ أثناء قراءة الصور.");
+  }
+});
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const brand = document.getElementById("brand").value.trim();
+  const model = document.getElementById("model").value.trim();
+  const year = Number(document.getElementById("year").value);
+  const price = Number(document.getElementById("price").value);
+  const city = document.getElementById("city").value;
+  const condition = document.getElementById("condition").value;
+  const phone = document.getElementById("phone").value.trim();
+  const description = document.getElementById("description").value.trim();
+
+  if (!brand || !model || !year || price < 0 || !city || !phone) {
+    alert("يرجى تعبئة جميع الحقول المطلوبة، بما فيها رقم الهاتف.");
+    return;
+  }
+
+  if (!/^[+\d\s()-]{7,25}$/.test(phone)) {
+    alert("يرجى إدخال رقم هاتف صحيح.");
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "جارٍ حفظ الإعلان...";
+
+  try {
+    let oldCar = null;
+
+    if (editingId !== null) {
+      oldCar = cars.find(function(car) {
+        return String(car.id) === String(editingId);
+      });
+    }
+
+    const newCar = {
+      id: editingId !== null ? editingId : String(Date.now()),
+      brand: brand,
+      model: model,
+      year: year,
+      price: price,
+      city: city,
+      condition: condition,
+      phone: phone,
+      description: description,
+      images: selectedImages.length
+        ? selectedImages
+        : (oldCar && Array.isArray(oldCar.images) ? oldCar.images : []),
+      status: oldCar ? oldCar.status : "available",
+      updatedAt: new Date().toISOString()
+    };
+
+    const previousCars = JSON.stringify(cars);
+
+    if (editingId !== null) {
+      cars = cars.map(function(car) {
+        return String(car.id) === String(editingId) ? newCar : car;
+      });
+    } else {
+      cars.unshift(newCar);
+    }
+
+    if (!saveCars()) {
+      cars = JSON.parse(previousCars);
+      return;
+    }
+
+    alert(editingId !== null
+      ? "تم تعديل الإعلان بنجاح."
+      : "تم نشر الإعلان بنجاح.");
+
+    resetForm();
+    renderCars();
+
+    document.getElementById("carsGrid").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  } catch (error) {
+    console.error(error);
+    alert("حدث خطأ أثناء حفظ الإعلان. حاول مرة أخرى.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "نشر الإعلان";
+  }
+});
+
+function resetForm() {
+  form.reset();
+  editingId = null;
+  selectedImages = [];
+  imagePreview.innerHTML = "";
+  document.getElementById("formTitle").textContent = "🚘 أضف إعلان سيارة";
+  submitButton.textContent = "نشر الإعلان";
+  cancelEditButton.style.display = "none";
+}
+
+cancelEditButton.addEventListener("click", resetForm);
+
+carsGrid.addEventListener("click", function(event) {
   const button = event.target.closest("button[data-action]");
   if (!button) return;
 
   const id = button.dataset.id;
   const action = button.dataset.action;
 
-  if (action === "edit") editCar(id);
-  if (action === "delete") deleteCar(id);
-  if (action === "sold") toggleSold(id);
+  const car = cars.find(function(item) {
+    return String(item.id) === String(id);
+  });
 
-  if (action === "whatsapp") {
-    const car = cars.find(c => c.id === id);
-    if (car) {
-      const phone = normalizePhone(car.phone);
-      if (phone) {
-        window.open("https://wa.me/" + phone, "_blank");
-      }
+  if (!car) {
+    alert("لم يتم العثور على الإعلان.");
+    return;
+  }
+
+  if (action === "edit") {
+    editingId = car.id;
+
+    document.getElementById("brand").value = car.brand || "";
+    document.getElementById("model").value = car.model || "";
+    document.getElementById("year").value = car.year || "";
+    document.getElementById("price").value = car.price || "";
+    document.getElementById("city").value = car.city || "";
+    document.getElementById("condition").value =
+      car.condition || "مستعملة";
+    document.getElementById("phone").value = car.phone || "";
+    document.getElementById("description").value =
+      car.description || "";
+
+    selectedImages = Array.isArray(car.images) ? car.images.slice() : [];
+    showPreview(selectedImages);
+
+    document.getElementById("formTitle").textContent = "✏️ تعديل الإعلان";
+    submitButton.textContent = "حفظ التعديلات";
+    cancelEditButton.style.display = "inline-block";
+
+    document.getElementById("addCar").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+  if (action === "sold") {
+    const previousStatus = car.status;
+    car.status = car.status === "sold" ? "available" : "sold";
+
+    if (saveCars()) {
+      renderCars();
+    } else {
+      car.status = previousStatus;
+    }
+  }
+
+  if (action === "delete") {
+    if (!confirm("هل أنت متأكد أنك تريد حذف هذا الإعلان؟")) {
+      return;
+    }
+
+    const previousCars = cars.slice();
+    cars = cars.filter(function(item) {
+      return String(item.id) !== String(id);
+    });
+
+    if (saveCars()) {
+      renderCars();
+    } else {
+      cars = previousCars;
     }
   }
 });
 
-$("search").addEventListener("input", renderCars);
-$("cityFilter").addEventListener("change", renderCars);
-$("statusFilter").addEventListener("change", renderCars);
+document.getElementById("search").addEventListener("input", renderCars);
+document.getElementById("cityFilter").addEventListener("change", renderCars);
 
+loadCars();
 renderCars();
 </script>
 
