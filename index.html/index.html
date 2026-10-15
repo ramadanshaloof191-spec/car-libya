@@ -2,341 +2,137 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CAR LIBYA | سوق السيارات الليبي</title>
 <style>
-:root{--gold:#d6ad55;--bg:#080808;--card:#141414;--muted:#aaa;--line:#292929}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Tahoma,sans-serif;line-height:1.7}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-header{position:sticky;top:0;z-index:5;background:#090909ed;border-bottom:1px solid #332817;backdrop-filter:blur(12px)}
-.nav{max-width:1150px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:24px;font-weight:900;letter-spacing:1px;color:var(--gold)}
-.logo small{display:block;font-size:10px;color:#ddd;letter-spacing:3px}
-.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:bold;background:var(--gold);color:#111}
-.btn.outline{background:transparent;color:var(--gold);border:1px solid var(--gold)}
-main{max-width:1150px;margin:auto;padding:20px 16px 60px}
-.hero{position:relative;overflow:hidden;border:1px solid #49391e;border-radius:22px;padding:42px 25px;background:radial-gradient(ellipse at 90% 10%,#60451d77,transparent 45%),linear-gradient(135deg,#191919,#090909 70%);min-height:260px}
-.hero:after{content:"CAR";position:absolute;left:-10px;bottom:-70px;font-size:180px;font-weight:900;color:#ffffff06;pointer-events:none}
-.badge{display:inline-block;color:var(--gold);border:1px solid #725727;border-radius:30px;padding:4px 12px;font-size:12px}
-h1{font-size:clamp(30px,6vw,52px);line-height:1.25;margin:15px 0}
-h1 span{color:var(--gold)}
-.hero p{color:#c3c3c3;max-width:570px}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:17px 0 30px}
-.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;text-align:center}
-.feature b{display:block;color:var(--gold);font-size:17px}
-.feature span{font-size:12px;color:var(--muted)}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:28px 0 14px}
-h2{margin:0;font-size:24px}
-h2 span{color:var(--gold)}
-.search{display:grid;grid-template-columns:2fr 1fr auto;gap:10px;background:#111;padding:13px;border:1px solid var(--line);border-radius:15px}
-input,select,textarea{width:100%;background:#090909;color:#fff;border:1px solid #343434;border-radius:9px;padding:12px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.car{overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:15px;transition:.2s}
-.car:hover{border-color:#80652f;transform:translateY(-3px)}
-.car img{width:100%;height:190px;object-fit:cover;background:#222;display:block}
-.car-body{padding:14px}
-.car h3{margin:0 0 5px;font-size:19px}
-.price{font-size:22px;color:var(--gold);font-weight:900;margin:8px 0}
-.details{display:flex;flex-wrap:wrap;gap:7px;color:#bbb;font-size:12px}
-.tag{background:#242016;border-radius:6px;padding:3px 8px}
-.description{color:#bbb;font-size:13px;min-height:25px;overflow-wrap:anywhere}
-.contact{display:block;text-align:center;background:#187b43;color:white;text-decoration:none;border-radius:9px;padding:10px;margin-top:12px;font-weight:bold}
-.empty{grid-column:1/-1;text-align:center;border:1px dashed #4b402b;padding:35px 15px;border-radius:15px;color:#bbb}
-.empty strong{display:block;color:var(--gold);font-size:18px;margin-bottom:5px}
-.panel{margin-top:35px;border:1px solid #48391f;border-radius:18px;padding:22px;background:linear-gradient(135deg,#17140f,#101010)}
-.panel>p{color:#bbb;font-size:14px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field label{display:block;font-size:13px;color:#ddd;margin-bottom:5px}
-.field.full{grid-column:1/-1}
-textarea{min-height:95px;resize:vertical}
-.notice{display:none;padding:12px;border-radius:9px;margin:12px 0;font-size:14px}
-.notice.ok{display:block;background:#103521;color:#b9f5cc;border:1px solid #286541}
-.notice.err{display:block;background:#391717;color:#ffd0d0;border:1px solid #713333}
-footer{text-align:center;color:#777;border-top:1px solid var(--line);padding:25px 12px;font-size:12px}
-footer b{color:var(--gold)}
-.loading{text-align:center;color:var(--muted);padding:30px}
-@media(max-width:750px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search{grid-template-columns:1fr 1fr}.search input{grid-column:1/-1}.search button{grid-column:1/-1}.hero{padding:30px 19px}.car img{height:150px}}
-@media(max-width:480px){.grid{grid-template-columns:1fr 1fr;gap:9px}.car img{height:125px}.car-body{padding:10px}.car h3{font-size:16px}.price{font-size:18px}.details{font-size:11px}.nav{padding:12px}.logo{font-size:20px}.nav .btn{padding:9px 10px;font-size:12px}.features{gap:7px}.feature{padding:10px 5px}.feature b{font-size:14px}.feature span{font-size:10px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero:after{font-size:110px;bottom:-35px}}
+:root{--gold:#d4af37;--bg:#0f0f0f;--card:#1c1c1c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Arial, Tahoma}
+header{background:#000;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:10}
+.logo{font-weight:900;font-size:26px;color:var(--gold);letter-spacing:1px}
+.btn{background:var(--gold);color:#000;border:0;padding:12px 20px;border-radius:10px;font-weight:900;cursor:pointer}
+.hero{text-align:center;padding:25px 15px;background:linear-gradient(#1f1f1f,#0f0f0f)}
+.filters{max-width:1200px;margin:12px auto;padding:12px;display:flex;gap:8px;flex-wrap:wrap;background:var(--card);border-radius:12px;border:1px solid #333}
+.filters input,.filters select{flex:1;min-width:140px;padding:11px;background:#2a2a2a;border:1px solid #555;color:#fff;border-radius:8px}
+.grid{max-width:1200px;margin:auto;padding:15px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px}
+.card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid #333;transition:.2s}
+.card:hover{border-color:var(--gold)}
+.card img{width:100%;height:185px;object-fit:cover;background:#222}
+.card-body{padding:13px}
+.price{color:var(--gold);font-weight:900;font-size:22px}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0;color:#bbb;font-size:13px}
+.tag{background:#2a2a2a;padding:5px 10px;border-radius:20px}
+.wa{display:flex;gap:8px;margin-top:12px}
+.wa a{flex:1;text-align:center;padding:11px;border-radius:8px;text-decoration:none;font-weight:bold}
+.wa1{background:#25D366;color:#fff}.wa2{background:#fff;color:#000}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;place-items:center;z-index:99;padding:12px}
+.box{background:#1e1e1e;padding:22px;border-radius:16px;width:100%;max-width:600px;max-height:92vh;overflow:auto;border:1.5px solid var(--gold)}
+.box input,.box select,.box textarea{width:100%;padding:11px;margin:6px 0 10px;background:#2a2a2a;border:1px solid #555;color:#fff;border-radius:8px}
+#status{color:var(--gold);font-weight:bold;margin-top:8px}
+#binInfo{font-size:11px;color:#777;word-break:break-all;margin-top:6px}
 </style>
 </head>
 <body>
 <header>
-  <div class="nav">
-    <div class="logo">CAR LIBYA<small>سوق السيارات الليبي</small></div>
-    <button class="btn" onclick="document.getElementById('add').scrollIntoView({behavior:'smooth'})">＋ أضف سيارتك</button>
-  </div>
+<div class="logo">CAR LIBYA</div>
+<button class="btn" onclick="openAdd()">+ بيع سيارتك</button>
 </header>
 
-<main>
-  <section class="hero">
-    <span class="badge">منصتك لبيع وشراء السيارات في ليبيا</span>
-    <h1>سيارتك القادمة<br><span>تبدأ من هنا</span></h1>
-    <p>اكتشف السيارات المعروضة للبيع في ليبيا، قارن الأسعار، وتواصل مباشرة مع البائع عبر واتساب.</p>
-    <div class="hero-actions">
-      <button class="btn" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">اكتشف السيارات ←</button>
-      <button class="btn outline" onclick="document.getElementById('add').scrollIntoView({behavior:'smooth'})">اعرض سيارتك مجاناً</button>
-    </div>
-  </section>
+<div class="hero">
+<h2 style="margin:0;color:var(--gold)">سوق السيارات الليبي الأول</h2>
+<p style="margin:8px 0 0;color:#ccc">أعلن مجانا - الكل يشوف إعلانك</p>
+<div id="status">جاري تحميل السيارات...</div>
+<div id="binInfo"></div>
+</div>
 
-  <section class="features">
-    <div class="feature"><b>🚘 سيارات متنوعة</b><span>تصفح الإعلانات المعتمدة</span></div>
-    <div class="feature"><b>📱 تواصل مباشر</b><span>تواصل مع البائع بسهولة</span></div>
-    <div class="feature"><b>🛡️ مراجعة الإعلانات</b><span>كل إعلان جديد ينتظر المراجعة</span></div>
-  </section>
+<div class="filters">
+<input id="q" placeholder="ابحث Toyota, Kia..." oninput="render()">
+<select id="fCity" onchange="render()"><option value="">كل المدن</option><option>طرابلس</option><option>بنغازي</option><option>مصراتة</option><option>الزاوية</option><option>الخمس</option><option>زليتن</option><option>سبها</option><option>اجدابيا</option><option>البيضاء</option><option>طبرق</option><option>غريان</option><option>صبراتة</option><option>زوارة</option><option>سرت</option></select>
+<select id="fBrand" onchange="render()"><option value="">كل الماركات</option><option>Toyota</option><option>Hyundai</option><option>Kia</option><option>Mercedes</option><option>BMW</option><option>Honda</option><option>Nissan</option><option>Ford</option><option>Chevrolet</option></select>
+</div>
 
-  <section id="listings">
-    <div class="section-head">
-      <h2>السيارات <span>المعروضة</span></h2>
-      <span id="count" style="color:#aaa;font-size:13px">جاري تحميل الإعلانات...</span>
-    </div>
-    <div class="search">
-      <input id="searchText" placeholder="ابحث عن نوع السيارة أو الموديل">
-      <select id="searchCity">
-        <option value="">كل المدن</option>
-        <option>طرابلس</option><option>الخمس</option><option>مصراتة</option>
-        <option>بنغازي</option><option>الزاوية</option><option>زليتن</option>
-        <option>سبها</option><option>صبراتة</option><option>أخرى</option>
-      </select>
-      <button class="btn" onclick="renderCars()">بحث</button>
-    </div>
-    <div id="cars" class="grid" style="margin-top:17px">
-      <div class="loading">جاري تحميل السيارات...</div>
-    </div>
-  </section>
+<div id="cars" class="grid"></div>
 
-  <section class="panel" id="add">
-    <span class="badge">إعلان جديد</span>
-    <h2 style="margin-top:12px">اعرض سيارتك <span style="color:var(--gold)">للبيع</span></h2>
-    <p>عبّي البيانات التالية. إعلانك يصل للمراجعة أولاً، وبعد اعتماده يمكن أن يظهر للزوار.</p>
-    <div id="formNotice" class="notice"></div>
-    <form id="carForm">
-      <div class="form-grid">
-        <div class="field">
-          <label for="make">الشركة *</label>
-          <input id="make" required maxlength="60" placeholder="مثال: تويوتا">
-        </div>
-        <div class="field">
-          <label for="model">الموديل *</label>
-          <input id="model" required maxlength="60" placeholder="مثال: كامري">
-        </div>
-        <div class="field">
-          <label for="year">سنة الصنع</label>
-          <input id="year" type="number" min="1950" max="2027" placeholder="2020">
-        </div>
-        <div class="field">
-          <label for="price">السعر بالدينار الليبي *</label>
-          <input id="price" type="number" min="0" required placeholder="45000">
-        </div>
-        <div class="field">
-          <label for="city">المدينة *</label>
-          <select id="city" required>
-            <option value="">اختر المدينة</option>
-            <option>طرابلس</option><option>الخمس</option><option>مصراتة</option>
-            <option>بنغازي</option><option>الزاوية</option><option>زليتن</option>
-            <option>سبها</option><option>صبراتة</option><option>أخرى</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="phone">رقم الهاتف أو واتساب *</label>
-          <input id="phone" type="tel" required maxlength="25" placeholder="09XXXXXXXX">
-        </div>
-        <div class="field full">
-          <label for="image">رابط صورة السيارة (اختياري)</label>
-          <input id="image" type="url" placeholder="https://example.com/car.jpg">
-        </div>
-        <div class="field full">
-          <label for="description">تفاصيل السيارة</label>
-          <textarea id="description" maxlength="1500" placeholder="حالة السيارة، نوع القير، الممشى وأي تفاصيل مهمة..."></textarea>
-        </div>
-        <div class="field full">
-          <button id="submitBtn" class="btn" type="submit" style="width:100%;padding:14px">إرسال الإعلان للمراجعة</button>
-        </div>
-      </div>
-    </form>
-  </section>
-</main>
-
-<footer>
-  <b>CAR LIBYA</b> — سوق السيارات الليبي<br>
-  البيع والشراء يبدأ بخطوة
-</footer>
+<div id="modal" class="modal"><div class="box">
+<h3 style="color:var(--gold);margin-top:0">أضف سيارتك - CAR LIBYA</h3>
+<form id="form">
+<input id="brand" placeholder="الماركة Toyota" required>
+<input id="model" placeholder="الموديل Camry" required>
+<div style="display:flex;gap:8px"><input id="year" type="number" placeholder="السنة 2020" required style="flex:1"><input id="km" type="number" placeholder="كم ماشية 50,000" required style="flex:1"></div>
+<div style="display:flex;gap:8px"><select id="gear" required style="flex:1"><option value="">الكمبيو</option><option>توماتيك</option><option>عادي</option></select><select id="fuel" required style="flex:1"><option value="">الوقود</option><option>بنزين</option><option>نافطة</option><option>كهرباء</option></select></div>
+<input id="price" type="number" placeholder="السعر بالدينار" required>
+<select id="city" required><option value="">اختر المدينة</option><option>طرابلس</option><option>بنغازي</option><option>مصراتة</option><option>الزاوية</option><option>الخمس</option><option>زليتن</option><option>سبها</option><option>اجدابيا</option><option>البيضاء</option><option>طبرق</option><option>غريان</option></select>
+<input id="phone" placeholder="رقم واتساب 2189XXXXXXX" required>
+<textarea id="desc" placeholder="وصف السيارة، نظافة، حوادث..." rows="3"></textarea>
+<input id="images" type="file" accept="image/*">
+<button class="btn" style="width:100%;margin-top:6px" type="submit">نشر مجانا للعامة 🚀</button>
+<button type="button" onclick="closeAdd()" style="width:100%;margin-top:8px;background:#333;color:#fff;border:0;padding:11px;border-radius:8px;cursor:pointer">إلغاء</button>
+</form>
+</div></div>
 
 <script>
-const SUPABASE_URL = "https://vaafupmitnlffpqefmtl.supabase.co";
-const SUPABASE_KEY = "sb_publishable_Z002KdRZ5x4YpjvJnV5QnQ_MRuzG_eI";
+// الرابط العام - ينشئ نفسه تلقائيا أول مرة
+let BIN_URL = localStorage.getItem('CARLIBYA_BIN_V2') || "";
+let cars=[];
 
-let allCars = [];
-
-function apiHeaders(extra = {}) {
-  return {
-    "apikey": SUPABASE_KEY,
-    "Authorization": "Bearer " + SUPABASE_KEY,
-    ...extra
-  };
+async function createBin(){
+  let res = await fetch("https://api.npoint.io",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify([])});
+  let data = await res.json();
+  BIN_URL = "https://api.npoint.io/"+data.id;
+  localStorage.setItem('CARLIBYA_BIN_V2',BIN_URL);
+  return BIN_URL;
 }
 
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[ch]));
+async function loadCars(){
+  try{
+    if(!BIN_URL){ BIN_URL = await createBin(); }
+    let r = await fetch(BIN_URL);
+    if(!r.ok) throw "error";
+    cars = await r.json();
+    if(!Array.isArray(cars)) cars=[];
+    document.getElementById('status').innerText = `✅ CAR LIBYA شغال للعامة - ${cars.length} سيارة`;
+    document.getElementById('binInfo').innerText = "رابط قاعدتك: "+BIN_URL+" - ثبته في الكود بعدين";
+    render();
+  }catch(e){
+    try{ BIN_URL = await createBin(); loadCars(); }
+    catch(err){ document.getElementById('status').innerText = "افتح npoint.io وانشئ bin فيه []"; }
+  }
 }
 
-function formatPrice(value) {
-  const n = Number(value || 0);
-  return n.toLocaleString("en-US") + " د.ل";
-}
+function openAdd(){document.getElementById('modal').style.display='grid'}
+function closeAdd(){document.getElementById('modal').style.display='none'}
 
-function safeImage(value) {
-  try {
-    const u = new URL(value);
-    if (u.protocol === "https:" || u.protocol === "http:") return u.href;
-  } catch(e) {}
-  return "";
-}
-
-function phoneForWhatsApp(value) {
-  let n = String(value || "").replace(/\D/g, "");
-  if (n.startsWith("00")) n = n.slice(2);
-  if (n.startsWith("0")) n = "218" + n.slice(1);
-  return n;
-}
-
-function renderCars() {
-  const query = document.getElementById("searchText").value.trim().toLowerCase();
-  const city = document.getElementById("searchCity").value;
-  const filtered = allCars.filter(car => {
-    const words = `${car.make || ""} ${car.model || ""} ${car.year || ""}`.toLowerCase();
-    return (!query || words.includes(query)) && (!city || car.city === city);
+function render(){
+  let q=document.getElementById('q').value.toLowerCase();
+  let city=document.getElementById('fCity').value;
+  let brand=document.getElementById('fBrand').value;
+  let f=cars.filter(c=>{
+    return (c.brand+' '+c.model).toLowerCase().includes(q) && (!city||c.city===city) && (!brand||c.brand===brand)
   });
-
-  document.getElementById("count").textContent = filtered.length + " سيارة";
-  const box = document.getElementById("cars");
-
-  if (!filtered.length) {
-    box.innerHTML = `<div class="empty"><strong>🚘 لا توجد إعلانات مطابقة حالياً</strong>كن أول من يعرض سيارته على CAR LIBYA.</div>`;
-    return;
-  }
-
-  box.innerHTML = filtered.map(car => {
-    const image = safeImage(car.image_url);
-    const phone = phoneForWhatsApp(car.phone);
-    const wa = phone ? `https://wa.me/${phone}?text=${encodeURIComponent("السلام عليكم، مهتم بسيارة " + (car.make || "") + " " + (car.model || ""))}` : "";
-    return `<article class="car">
-      <img src="${escapeHTML(image || "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80")}" alt="صورة السيارة" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80'">
-      <div class="car-body">
-        <h3>${escapeHTML(car.make)} ${escapeHTML(car.model)}</h3>
-        <div class="details">
-          ${car.year ? `<span class="tag">📅 ${escapeHTML(car.year)}</span>` : ""}
-          ${car.city ? `<span class="tag">📍 ${escapeHTML(car.city)}</span>` : ""}
-        </div>
-        <div class="price">${formatPrice(car.price)}</div>
-        <div class="description">${escapeHTML(car.description || "للمزيد من التفاصيل تواصل مع البائع.")}</div>
-        ${wa ? `<a class="contact" href="${escapeHTML(wa)}" target="_blank" rel="noopener">تواصل عبر واتساب</a>` : `<div class="contact" style="background:#333">لا يوجد رقم تواصل</div>`}
-      </div>
-    </article>`;
-  }).join("");
+  document.getElementById('cars').innerHTML = f.map(c=>`
+  <div class="card">
+    <img src="${c.img||'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600'}">
+    <div class="card-body">
+      <div class="price">${Number(c.price).toLocaleString()} د.ل</div>
+      <b>${c.brand} ${c.model} ${c.year||''}</b>
+      <div class="meta"><span class="tag">📍 ${c.city}</span><span class="tag">🛣️ ${c.km||0} KM</span><span class="tag">${c.gear||''}</span></div>
+      <div style="font-size:13px;color:#ccc;margin-top:4px">${(c.desc||'').slice(0,80)}</div>
+      <div class="wa"><a class="wa1" href="https://wa.me/${c.phone}?text=مرحبا بخصوص ${c.brand} ${c.model} في CAR LIBYA" target="_blank">واتساب</a><a class="wa2" href="tel:${c.phone}">اتصال</a></div>
+    </div>
+  </div>`).join('') || '<p style="text-align:center;padding:50px;color:#777">لا توجد سيارات، كن أول من يعلن!</p>';
 }
 
-async function loadCars() {
-  const box = document.getElementById("cars");
-  try {
-    const url = SUPABASE_URL + "/rest/v1/cars?select=id,make,model,year,price,city,phone,description,image_url,status,created_at&status=eq.available&order=created_at.desc";
-    const response = await fetch(url, {headers: apiHeaders()});
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error("تعذر جلب الإعلانات (" + response.status + ").");
-    }
-    allCars = await response.json();
-    renderCars();
-  } catch (error) {
-    document.getElementById("count").textContent = "تعذر الاتصال";
-    box.innerHTML = `<div class="empty"><strong>تعذر تحميل الإعلانات</strong>تحقق من إعدادات قاعدة البيانات وصلاحيات قراءة السيارات، ثم أعد تحميل الصفحة.</div>`;
-    console.error(error);
-  }
-}
-
-document.getElementById("searchText").addEventListener("input", renderCars);
-document.getElementById("searchCity").addEventListener("change", renderCars);
-
-document.getElementById("carForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  const notice = document.getElementById("formNotice");
-  const button = document.getElementById("submitBtn");
-  notice.className = "notice";
-  notice.textContent = "";
-
-  const yearValue = document.getElementById("year").value;
-  const priceValue = Number(document.getElementById("price").value);
-  const imageValue = document.getElementById("image").value.trim();
-
-  if (!Number.isFinite(priceValue) || priceValue < 0) {
-    notice.className = "notice err";
-    notice.textContent = "يرجى إدخال سعر صحيح.";
-    return;
-  }
-
-  if (imageValue && !safeImage(imageValue)) {
-    notice.className = "notice err";
-    notice.textContent = "رابط الصورة غير صحيح. اتركه فارغاً أو أدخل رابطاً يبدأ بـ https://";
-    return;
-  }
-
-  const payload = {
-    id: Date.now() * 1000 + Math.floor(Math.random() * 1000),
-    make: document.getElementById("make").value.trim(),
-    model: document.getElementById("model").value.trim(),
-    year: yearValue ? Number(yearValue) : null,
-    price: priceValue,
-    city: document.getElementById("city").value,
-    phone: document.getElementById("phone").value.trim(),
-    image_url: imageValue || null,
-    description: document.getElementById("description").value.trim() || null,
-    status: "pending"
-  };
-
-  if (!payload.make || !payload.model || !payload.city || !payload.phone) {
-    notice.className = "notice err";
-    notice.textContent = "يرجى تعبئة جميع الحقول المطلوبة.";
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "جاري إرسال الإعلان...";
-  try {
-    const response = await fetch(SUPABASE_URL + "/rest/v1/car_submissions", {
-      method: "POST",
-      headers: apiHeaders({
-        "Content-Type": "application/json",
-        "Prefer": "return=minimal"
-      }),
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-      const details = await response.text();
-      console.error("Submission error:", response.status, details);
-      throw new Error("لم يقبل الخادم الإعلان. قد تحتاج قاعدة البيانات إلى مراجعة الإعدادات.");
-    }
-
-    notice.className = "notice ok";
-    notice.textContent = "✅ تم إرسال إعلانك بنجاح. إعلانك قيد المراجعة ولن يظهر للزوار إلا بعد اعتماده.";
-    this.reset();
-  } catch (error) {
-    notice.className = "notice err";
-    notice.textContent = error.message || "حدث خطأ أثناء إرسال الإعلان. حاول مرة أخرى.";
-  } finally {
-    button.disabled = false;
-    button.textContent = "إرسال الإعلان للمراجعة";
-  }
+document.getElementById('form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  let img=''; if(images.files[0]) img=await new Promise(r=>{let fr=new FileReader();fr.onload=e=>r(e.target.result);fr.readAsDataURL(images.files[0])});
+  let data={brand:brand.value,model:model.value,year:year.value,km:km.value,gear:gear.value,fuel:fuel.value,price:price.value,city:city.value,phone:phone.value,desc:desc.value,img,time:Date.now()};
+  cars.unshift(data);
+  document.getElementById('status').innerText="جاري النشر للعامة...";
+  await fetch(BIN_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(cars)});
+  closeAdd(); e.target.reset(); render();
+  document.getElementById('status').innerText=`تم النشر! عندنا ${cars.length} سيارة`;
 });
 
 loadCars();
 </script>
 </body>
-          </html>
+</html>
