@@ -1,4 +1,4 @@
-name: Deploy static content to Pages
+name: Deploy CAR LIBYA to Pages
 
 on:
   push:
@@ -25,7 +25,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Disable Jekyll
+        run: touch .nojekyll
+
+      - name: Upload website files
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
@@ -37,6 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Publish website
         id: deployment
         uses: actions/deploy-pages@v4
