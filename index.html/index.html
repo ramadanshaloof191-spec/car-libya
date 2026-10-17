@@ -49,7 +49,29 @@ async function api(path,options={}){const headers={apikey:SUPABASE_KEY,Authoriza
 function imagesOf(car){const raw=car.image_url;if(!raw)return [];if(Array.isArray(raw))return raw.filter(Boolean);const text=String(raw).trim();if(!text)return [];try{const parsed=JSON.parse(text);if(Array.isArray(parsed))return parsed.filter(Boolean);if(typeof parsed==='string'&&parsed)return [parsed]}catch{}return text.split(',').map(s=>s.trim()).filter(Boolean)}
 function formatPrice(price){const n=Number(price);return Number.isFinite(n)?new Intl.NumberFormat('ar-LY').format(n):escapeHTML(price)}
 function normalPhone(phone){return String(phone||'').replace(/[\s()+-]/g,'')}
-function phoneHref(phone){let p=normalPhone(phone);if(p.startsWith('0')&&p.length>=9)p='218'+p.slice(1);return p}
+function phoneHref(phone){
+  let p = String(phone || '');
+
+  // تحويل الأرقام العربية إلى أرقام إنجليزية
+  p = p.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+
+  // حذف المسافات والرموز
+  p = p.replace(/\D/g, '');
+
+  // إزالة مفتاح الاتصال الدولي 00 إن وُجد
+  if (p.startsWith('00')) {
+    p = p.slice(2);
+  }
+
+  // تحويل الرقم الليبي إلى الصيغة الدولية
+  if (p.startsWith('0')) {
+    p = '218' + p.slice(1);
+  } else if (p.length === 9 && !p.startsWith('218')) {
+    p = '218' + p;
+  }
+
+  return p;
+}
 function carTitle(car){return [car.make,car.model].filter(Boolean).join(' ')}
 function renderCars(){const query=$('searchInput').value.trim().toLocaleLowerCase('ar');const city=$('cityFilter').value;const sort=$('sortFilter').value;let cars=allCars.filter(car=>{const hay=[car.make,car.model,car.year,car.city,car.description].join(' ').toLocaleLowerCase('ar');return (!query||hay.includes(query))&&(!city||car.city===city)});if(sort==='low')cars.sort((a,b)=>Number(a.price)-Number(b.price));else if(sort==='high')cars.sort((a,b)=>Number(b.price)-Number(a.price));else cars.sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0));$('resultsCount').innerHTML='عدد الإعلانات: <strong>'+cars.length+'</strong>';const box=$('cars');if(!cars.length){box.innerHTML='<div class="empty"><b>ما فيش سيارات مطابقة حالياً</b>جرّب تغيّر البحث أو ارجع لاحقاً. وإذا عندك سيارة للبيع، أضف إعلانك الآن.<br><br><a class="btn btn-gold" href="#publish">أضف إعلانك ＋</a></div>';return}box.innerHTML=cars.map(car=>{const imgs=imagesOf(car);const cover=imgs[0]||'';const sold=car.status==='sold';const token=ownerTokens()[String(car.id)];const title=carTitle(car)||'سيارة للبيع';const phone=String(car.phone||'');const wa=phoneHref(phone);const waUrl='https://wa.me/'+wa+'?text='+encodeURIComponent('السلام عليكم، مهتم بالإعلان: '+title);return `<article class="car-card"><div class="car-photo" data-gallery="${escapeHTML(car.id)}" role="button" tabindex="0" aria-label="عرض صور ${escapeHTML(title)}">${cover?`<img src="${escapeHTML(cover)}" alt="${escapeHTML(title)}" loading="lazy" onerror="this.style.display='none'">`:'<div style="height:100%;display:grid;place-items:center;color:#8e8e8e;font-size:48px">🚘</div>'}<span class="photo-count">▧ ${imgs.length} صور</span><span class="status-pill ${sold?'sold':''}">${sold?'تم البيع':'متاحة للبيع'}</span></div><div class="car-body"><h3 class="car-title">${escapeHTML(title)}</h3><div class="car-meta"><span>⌖ ${escapeHTML(car.city||'ليبيا')}</span></div><div class="car-price">${formatPrice(car.price)} <small>د.ل</small></div><button class="details-toggle" type="button" data-details-toggle="${escapeHTML(car.id)}" aria-expanded="false" aria-controls="car-details-${escapeHTML(car.id)}"><span>بيانات السيارة</span><span class="arrow" aria-hidden="true">⌄</span></button><div class="car-details" id="car-details-${escapeHTML(car.id)}"><div class="car-meta"><span>▣ سنة الصنع: ${escapeHTML(car.year||'—')}</span><span>⌖ المدينة: ${escapeHTML(car.city||'ليبيا')}</span></div><div class="car-desc">${escapeHTML(car.description||'لا توجد تفاصيل إضافية. تواصل مع البائع لمعرفة المزيد.')}</div><div class="car-contact"><a class="contact-btn whatsapp ${sold?'disabled':''}" href="${sold?'#':'https://wa.me/'+encodeURIComponent(wa)+'?text='+encodeURIComponent('السلام عليكم، مهتم بالإعلان: '+title)}" ${sold?'aria-disabled="true" onclick="return false"':'target="_blank" rel="noopener"'}>واتساب ↗</a><a class="contact-btn phone" href="${sold?'#':'tel:'+escapeHTML(phone)}" ${sold?'aria-disabled="true" onclick="return false"':''}>اتصال ☎</a></div>${token?`<div class="owner-actions"><button type="button" data-action="edit" data-id="${escapeHTML(car.id)}">تعديل الإعلان</button><button type="button" data-action="sold" data-id="${escapeHTML(car.id)}">تم البيع</button><button type="button" class="danger" data-action="delete" data-id="${escapeHTML(car.id)}">حذف</button></div>`:''}</div></div></article>`}).join('')}
 async function loadCars(){const box=$('cars');box.innerHTML='<div class="loading"><span class="spinner"></span> جاري تحميل السيارات...</div>';try{const rows=await api('/cars?select=id,make,model,year,price,city,phone,description,image_url,status,created_at&status=in.(available,sold)&order=created_at.desc',{method:'GET'});allCars=Array.isArray(rows)?rows:[];renderCars()}catch(error){console.error(error);box.innerHTML='<div class="empty"><b>تعذر تحميل الإعلانات حالياً</b>تأكد من الاتصال بالإنترنت ثم حدّث الصفحة.<br><small>'+escapeHTML(error.message)+'</small><br><br><button class="btn btn-outline" type="button" onclick="loadCars()">إعادة المحاولة</button></div>';$('resultsCount').textContent='تعذر تحميل الإعلانات'}}
