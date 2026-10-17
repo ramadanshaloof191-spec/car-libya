@@ -23,7 +23,63 @@
 <main id="top">
 <section class="hero"><div class="wrap"><div class="hero-card"><div class="hero-photo"></div><div class="hero-content"><div class="eyebrow">وجهتك الأولى لعالم السيارات في ليبيا</div><h1>سيارتك القادمة<br><span>تبدأ من هنا.</span></h1><p>تصفّح السيارات المعروضة في ليبيا، قارن الأسعار، وتواصل مباشرة مع البائع. أو اعرض سيارتك للبيع بخطوات بسيطة.</p><div class="hero-actions"><a class="btn btn-gold" href="#cars">اكتشف السيارات <span>←</span></a><a class="btn btn-outline" href="#publish">اعرض سيارتك للبيع ＋</a></div><div class="hero-stats"><div class="stat"><strong>سوق مفتوح</strong><span>للبيع والشراء</span></div><div class="stat"><strong>تواصل مباشر</strong><span>مع صاحب الإعلان</span></div><div class="stat"><strong>كل ليبيا</strong><span>مدن متعددة</span></div></div></div></div></div></section>
 <section class="section" id="carsSection"><div class="wrap"><div class="section-head"><div><div class="section-kicker">اكتشف سيارتك</div><h2>السيارات المعروضة</h2><p class="section-sub">استخدم البحث والفلاتر للوصول إلى السيارة المناسبة.</p></div><a href="#publish" class="btn btn-outline">＋ أضف إعلاناً</a></div>
-<div class="search-panel"><div class="field"><label for="searchInput">ابحث عن سيارة</label><input class="control" id="searchInput" type="search" placeholder="مثال: تويوتا كامري، هيونداي..." autocomplete="off"></div><div class="field"><label for="cityFilter">المدينة</label><select class="control" id="cityFilter"><option value="">كل المدن</option><option>طرابلس</option><option>بنغازي</option><option>مصراتة</option><option>الخمس</option><option>زليتن</option><option>الزاوية</option><option>سبها</option><option>سرت</option><option>درنة</option><option>البيضاء</option><option>غريان</option><option>طبرق</option><option>أجدابيا</option><option>ترهونة</option><option>صبراتة</option><option>يفرن</option><option>الكفرة</option><option>مرزق</option><option>غات</option><option>أوباري</option></select></div><div class="field"><label for="sortFilter">ترتيب النتائج</label><select class="control" id="sortFilter"><option value="newest">الأحدث أولاً</option><option value="low">السعر: من الأقل</option><option value="high">السعر: من الأعلى</option></select></div><div class="search-actions"><button class="btn btn-gold" id="searchBtn" type="button">بحث عن سيارة</button><button class="btn btn-outline" id="clearSearch" type="button">مسح</button></div></div>
+<button class="search-toggle" id="searchToggle" type="button" aria-expanded="false" aria-controls="searchFields">
+  <span>
+    <strong>⌕ البحث عن سيارة</strong>
+    <small>اضغط هنا لعرض خيارات البحث والتصفية</small>
+  </span>
+  <span class="arrow" aria-hidden="true">⌄</span>
+</button>
+
+<div id="searchFields">
+  <div class="search-panel">
+    <div class="field">
+      <label for="searchInput">ابحث عن سيارة</label>
+      <input class="control" id="searchInput" type="search" placeholder="مثال: تويوتا كامري، هيونداي..." autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label for="cityFilter">المدينة</label>
+      <select class="control" id="cityFilter">
+        <option value="">كل المدن</option>
+        <option>طرابلس</option>
+        <option>بنغازي</option>
+        <option>مصراتة</option>
+        <option>الخمس</option>
+        <option>زليتن</option>
+        <option>الزاوية</option>
+        <option>سبها</option>
+        <option>سرت</option>
+        <option>درنة</option>
+        <option>البيضاء</option>
+        <option>غريان</option>
+        <option>طبرق</option>
+        <option>أجدابيا</option>
+        <option>ترهونة</option>
+        <option>صبراتة</option>
+        <option>يفرن</option>
+        <option>الكفرة</option>
+        <option>مرزق</option>
+        <option>غات</option>
+        <option>أوباري</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="sortFilter">ترتيب النتائج</label>
+      <select class="control" id="sortFilter">
+        <option value="newest">الأحدث أولاً</option>
+        <option value="low">السعر: من الأقل</option>
+        <option value="high">السعر: من الأعلى</option>
+      </select>
+    </div>
+
+    <div class="search-actions">
+      <button class="btn btn-gold" id="searchBtn" type="button">بحث عن سيارة</button>
+      <button class="btn btn-outline" id="clearSearch" type="button">مسح</button>
+    </div>
+  </div>
+</div>
 <div class="results-row"><span id="resultsCount">جاري تحميل الإعلانات...</span><span>الأسعار بالدينار الليبي <strong>د.ل</strong></span></div><div class="cars-grid" id="cars"><div class="loading"><span class="spinner"></span> جاري تحميل السيارات...</div></div></div></section>
 <section class="section" id="publish"><div class="wrap"><div class="section-head"><div><div class="section-kicker">بيعها بسهولة</div><h2>أضف سيارتك للسوق</h2><p class="section-sub">أدخل بيانات السيارة وصورها ليتمكن المشترون من التواصل معك.</p></div></div><div class="publish-layout"><aside class="publish-info"><div class="eyebrow" style="color:#34260d">CAR LIBYA MARKETPLACE</div><h3>سيارتك تستحق<br>الظهور بشكل أفضل.</h3><p>أضف إعلانك بمعلومات واضحة وصور جيدة، وتواصل مباشرة مع المهتمين بالشراء.</p><ul><li>إضافة صور متعددة للسيارة</li><li>رقم هاتف للتواصل المباشر</li><li>إدارة إعلانك من نفس الجهاز</li></ul><div class="publish-symbol">✦</div></aside><form class="form-card" id="publishForm"><button class="publish-toggle" id="publishToggle" type="button" aria-expanded="false" aria-controls="publishFields"><span><strong>＋ بيع سيارتك</strong><small>اضغط لفتح استمارة نشر الإعلان</small></span><span class="arrow" aria-hidden="true">⌄</span></button><div id="publishFields"><h3>بيانات السيارة</h3><div class="form-grid"><div class="field"><label for="make">الشركة المصنعة *</label><input class="control" id="make" name="make" required maxlength="60" placeholder="مثال: تويوتا"></div><div class="field"><label for="model">الموديل *</label><input class="control" id="model" name="model" required maxlength="60" placeholder="مثال: كامري"></div><div class="field"><label for="year">سنة الصنع *</label><input class="control" id="year" name="year" type="number" required min="1950" max="2035" placeholder="2020"></div><div class="field"><label for="price">السعر بالدينار الليبي *</label><input class="control" id="price" name="price" type="number" required min="0" step="1" placeholder="45000"></div><div class="field"><label for="city">المدينة *</label><select class="control" id="city" name="city" required><option value="">اختر المدينة</option><option>طرابلس</option><option>بنغازي</option><option>مصراتة</option><option>الخمس</option><option>زليتن</option><option>الزاوية</option><option>سبها</option><option>سرت</option><option>درنة</option><option>البيضاء</option><option>غريان</option><option>طبرق</option><option>أجدابيا</option><option>ترهونة</option><option>صبراتة</option><option>يفرن</option><option>الكفرة</option><option>مرزق</option><option>غات</option><option>أوباري</option></select></div><div class="field"><label for="phone">رقم الهاتف *</label><input class="control" id="phone" name="phone" type="tel" required maxlength="25" inputmode="tel" placeholder="09XXXXXXXX"></div><div class="field span-2"><label for="photos">صور السيارة (حتى 8 صور)</label><input class="control file-input" id="photos" name="photos" type="file" accept="image/*" multiple><div class="hint">يفضل اختيار صور واضحة. الحد الأقصى 8 صور، وحجم الصورة الواحدة 8 ميغابايت.</div></div><div class="field span-2"><label for="description">تفاصيل إضافية</label><textarea class="control" id="description" name="description" rows="3" maxlength="1200" placeholder="الحالة، المسافة المقطوعة، نوع الوقود، وأي تفاصيل مهمة..."></textarea></div></div><button class="btn btn-gold form-submit" id="submitBtn" type="submit">نشر إعلان السيارة</button><p class="form-note">بنشر الإعلان، تأكد من صحة بيانات السيارة ورقم التواصل.</p></div></form></div></div></section>
 <section class="section" id="about"><div class="wrap"><div class="section-head"><div><div class="section-kicker">لماذا كار ليبيا؟</div><h2>سوق أقرب وأسهل</h2><p class="section-sub">تجربة واضحة تساعد البائع والمشتري على التواصل مباشرة.</p></div></div><div class="about-grid"><article class="feature"><div class="feature-icon">⌕</div><h3>بحث أسهل</h3><p>ابحث حسب اسم السيارة أو الموديل والمدينة، ورتّب النتائج حسب السعر.</p></article><article class="feature"><div class="feature-icon">▧</div><h3>صور وتفاصيل</h3><p>شاهد صور السيارة وتفاصيل الإعلان قبل التواصل مع البائع.</p></article><article class="feature"><div class="feature-icon">↗</div><h3>تواصل مباشر</h3><p>اتصل بالبائع أو تواصل معه عبر واتساب حسب رقم الإعلان.</p></article></div></div></section>
